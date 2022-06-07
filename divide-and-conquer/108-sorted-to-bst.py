@@ -17,16 +17,13 @@ class Solution:
     combine tree with midpoint
     """
     def sortedArrayToBST(self, nums):
-        if len(nums) == 0:
-            return TreeNode("null")
-        elif len(nums) == 1:
-            return TreeNode(nums[0])
-        else:
-            mid_index = floor(len(nums) / 2)
-            #  print(len(nums), mid_index)
-            return TreeNode(nums[mid_index], 
-                    self.sortedArrayToBST(nums[:mid_index]),
-                    self.sortedArrayToBST(nums[mid_index + 1:]))
+        if not nums:
+            return None
+        mid_index = len(nums) // 2
+        #  print(len(nums), mid_index)
+        return TreeNode(nums[mid_index], 
+                self.sortedArrayToBST(nums[:mid_index]),
+                self.sortedArrayToBST(nums[mid_index + 1:]))
 
 #  if __name__ == "__main__":
     #  solution = Solution()
