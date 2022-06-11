@@ -15,9 +15,10 @@ class Solution:
             print(num, num_subtract)
             nums_needed += 1
         return nums_needed
+        #  return max(list(n))
         
 if __name__ == "__main__":
     sol = Solution()
-    #  print(sol.minPartitions("32"))
-    #  print(sol.minPartitions("82734"))
+    print(sol.minPartitions("32"))
+    print(sol.minPartitions("82734"))
     print(sol.minPartitions("27346209830709182346"))
