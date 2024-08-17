@@ -11,27 +11,89 @@ class Solution(object):
         :type list2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        linked_list1 = ListNode(None)
-        linked_list2 = ListNode(None)
-        list1_end = linked_list1
-        list2_end = linked_list2
-        list1_head = linked_list1
-        list2_head = linked_list2
-        for num in list1:
-            list1_end = ListNode(num)
-            list1_end = list1_pointer.next
-        for num in list2:
-            list2_end = ListNode(num)
-            list2_end = list2_pointer.next
+        if list1 == None:
+            if list2 == None:
+                return None
+            return list2
+        elif list2 == None:
+            return list1
+
+        sorted_head = None
+        list1_end = list1
+        list2_end = list2
+        if list1.val <= list2.val:
+            sorted_head = list1
+            list1_end = list1_end.next
+        else:
+            sorted_head = list2
+            list1_end = list2_end.next
+
+        sorted_end = sorted_head
+        while (list1_end != None) or \
+            (list2_end != None):
+                if list1_end.val <= list2_end.val:
+                    sorted_end.next = list1_end
+                    list1_end = list1.next
+                else:
+                    sorted_end.next = list1_end
+                    list2_end = list2.next
+                sorted_end = sorted_end.next
+
+        if list1_end == None:
+            sorted_end.next = list2_end
+        elif list2_end == None:
+            sorted_end.next = list1_end
+        #  if list1_end > list2_end.val:
+            #  sorted_end.next = list1_end
+        #  else:
+            #  sorted_end.next = list2_end
+
+        return sorted_head
         
 if __name__ == "__main__":
     sol = Solution()
     #  base
-    list1 = [1,2,4]
-    list2 = [1,3,4]
+    # 
 
-    #  intertwined
-    #  s = "([{}])"
+    #  6
+    #  list1 = [3]
+    #  list2 = [1,2]
+    #  sorted = [1]
+    #  sorted_head = [1]
+    #  list1_end = [2]
+    #  list2_end = [3]
+    #  sorted_end = [1]
+    #  expected = [1,2,3]
+
+    #  4
+    #  list1 = [1,2]
+    #  list2 = [3]
+    #  expected = [1,2,3]
+
+    #  5
+    #  list1 = [1,2]
+    sorted = [1]
+    sorted_head = [1]
+    list1_end = [2]
+    list2_end = [3]
+    sorted_end = [1]
+    #  list2 = []
+    #  expected = [1,2]
+
+    #  3
+    #  list1 = []
+    #  list2 = [0]
+    #  expected = [0]
+
+    #  2
+    #  list1 = []
+    #  list2 = []
+    #  expected = []
+
+    #  1
+    #  list1 = [1,2,4]
+    #  list2 = [1,3,4]
+    #  expected = [1,1,2,3,4,4]
 
     # wrong
     #  s = "]"
