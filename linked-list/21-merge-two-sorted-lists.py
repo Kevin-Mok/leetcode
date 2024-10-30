@@ -26,7 +26,7 @@ class Solution(object):
             list1_end = list1_end.next
         else:
             sorted_head = list2
-            list1_end = list2_end.next
+            list2_end = list2_end.next
 
         sorted_end = sorted_head
         while (list1_end != None) and \
