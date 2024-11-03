@@ -17,11 +17,11 @@ class Solution(object):
             return root
         elif root.left == None:
             # return TreeNode(root.val, root.right, None)
-            root.left = root.right
+            root.left = self.invertTree(root.right)
             root.right = None
             # return TreeNode(root.val, root.right, None)
         elif root.right == None:
-            root.right = root.left
+            root.right = self.invertTree(root.left)
             root.left = None
             # return TreeNode(root.val, root.left, None)
         else:
