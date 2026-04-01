@@ -11,5 +11,9 @@
   "linked-list/remove-duplicates-from-sorted-list.py": {
     "frontend_id": "83",
     "demonstrates": "single-pass pointer rewiring on sorted linked lists"
+  },
+  "stack/simplify-path.py": {
+    "frontend_id": "71",
+    "demonstrates": "0 ms runtime, 100th-percentile result on a Medium stack problem"
   }
 }
