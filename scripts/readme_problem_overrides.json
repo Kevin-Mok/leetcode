@@ -1,1 +1,5 @@
-{}
+{
+  "stack/71-simplify-path.py": {
+    "demonstrates": "0 ms runtime, 100th-percentile result on a Medium stack problem"
+  }
+}

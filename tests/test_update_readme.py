@@ -243,6 +243,56 @@ class NotableProblemSelectionTests(unittest.TestCase):
         )
 
 
+class CollectProblemEntriesTests(unittest.TestCase):
+    def test_repo_override_file_preserves_custom_simplify_path_demonstrates(self):
+        repo_root = Path(__file__).resolve().parents[1]
+        overrides = load_update_readme_module(self).load_overrides(
+            repo_root / "scripts" / "readme_problem_overrides.json"
+        )
+
+        self.assertEqual(
+            overrides.get("stack/71-simplify-path.py", {}).get("demonstrates"),
+            "0 ms runtime, 100th-percentile result on a Medium stack problem",
+        )
+
+    def test_collect_problem_entries_preserves_custom_demonstrates_override(self):
+        module = load_update_readme_module(self)
+        client = FakeLeetCodeClient(
+            by_id={
+                "71": {
+                    "frontend_id": "71",
+                    "title": "Simplify Path",
+                    "title_slug": "simplify-path",
+                    "difficulty": "Medium",
+                }
+            }
+        )
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            repo_root = Path(tmp_dir)
+            override_path = repo_root / "overrides.json"
+            override_path.write_text(
+                '{\n'
+                '  "stack/71-simplify-path.py": {\n'
+                '    "demonstrates": "0 ms runtime, 100th-percentile result on a Medium stack problem"\n'
+                "  }\n"
+                "}\n"
+            )
+
+            with mock.patch.object(module, "collect_solution_paths", return_value=["stack/71-simplify-path.py"]), mock.patch.object(
+                module, "collect_test_paths", return_value=[]
+            ), mock.patch.object(module, "detect_harness", return_value=True), mock.patch.object(
+                module, "detect_test_coverage", return_value=False
+            ):
+                problems = module.collect_problem_entries(repo_root, override_path, client)
+
+        self.assertEqual(len(problems), 1)
+        self.assertEqual(
+            problems[0].demonstrates,
+            "0 ms runtime, 100th-percentile result on a Medium stack problem",
+        )
+
+
 class RenderReadmeTests(unittest.TestCase):
     def test_render_readme_groups_problems_by_difficulty_and_includes_metrics(self):
         module = load_update_readme_module(self)

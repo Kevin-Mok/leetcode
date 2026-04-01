@@ -24,7 +24,7 @@ The strongest signal here is not just volume. It is that the repo keeps solution
 | 894. All Possible Full Binary Trees | Medium | Dynamic Programming | state modeling and subproblem decomposition |
 | 1689. Partitioning Into Minimum Number Of Deci-Binary Numbers | Medium | Greedy | greedy selection under simple constraints |
 | 1962. Remove Stones to Minimize the Total | Medium | Heap | priority-queue updates under repeated operations |
-| 71. Simplify Path | Medium | Stack | stack-based validation and ordering rules |
+| 71. Simplify Path | Medium | Stack | 0 ms runtime, 100th-percentile result on a Medium stack problem |
 | 88. Merge Sorted Array | Easy | Array String | array mutation and pointer coordination |
 | 226. Invert Binary Tree | Easy | Binary Tree | tree recursion and traversal correctness |
 | 108. Convert Sorted Array to Binary Search Tree | Easy | Divide And Conquer | balanced recursive decomposition |
@@ -42,7 +42,7 @@ The strongest signal here is not just volume. It is that the repo keeps solution
 | 894. All Possible Full Binary Trees | Dynamic Programming | `dynamic-programming/894-all-possible-full-binary-trees.py` | state modeling and subproblem decomposition |
 | 1689. Partitioning Into Minimum Number Of Deci-Binary Numbers | Greedy | `greedy/1689-partitioning-into-minimum-number-of-deci-binary-numbers.py` | greedy selection under simple constraints |
 | 1962. Remove Stones to Minimize the Total | Heap | `heap/1962-remove-stones-to-minimize-the-total.py` | priority-queue updates under repeated operations |
-| 71. Simplify Path | Stack | `stack/71-simplify-path.py` | stack-based validation and ordering rules |
+| 71. Simplify Path | Stack | `stack/71-simplify-path.py` | 0 ms runtime, 100th-percentile result on a Medium stack problem |
 
 ## Easy
 | Problem | Category | Repo Path | What This Demonstrates |
