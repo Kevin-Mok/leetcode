@@ -5,3 +5,5 @@
 2026-04-01 - In this repo, keep LeetCode hints minimal. Prefer the smallest useful nudge over a full explanation unless the user asks for more detail.
 2026-04-01 - When initializing a new LeetCode problem in this repo, check for a same-name `.txt` file first and use it as the source for local test cases when present.
 2026-04-01 - When the user reports a LeetCode error, explain the cause without solving the algorithm. Only state whether the issue is a placeholder/stub that still needs implementation versus a repo-side harness problem.
+2026-04-01 - In this repo, never give a LeetCode solution unless the user explicitly asks for one. Default to the smallest useful hint only, and avoid strong solution direction unless they ask for more.
+2026-04-01 - In this repo, when the user asks whether a language feature or helper like `split` is allowed, answer only that narrow question and do not add stack, parsing, or algorithm guidance unless they explicitly ask for it.
