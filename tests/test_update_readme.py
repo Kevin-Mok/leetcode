@@ -284,6 +284,8 @@ class RenderReadmeTests(unittest.TestCase):
         self.assertIn("Binary Tree Inorder Traversal", rendered)
         self.assertIn("What This Demonstrates", rendered)
         self.assertIn("python3 scripts/update_readme.py", rendered)
+        self.assertIn("python3 scripts/download_problem_catalog.py", rendered)
+        self.assertIn("data/leetcode-problem-catalog.json", rendered)
 
 
 class MainCheckModeTests(unittest.TestCase):

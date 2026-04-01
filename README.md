@@ -95,7 +95,13 @@ python3 --version
 
 ## Day-To-Day Use
 
-Add a new solution under the matching topic directory, then regenerate the README so the solved-problem index, difficulty counts, and notable-problem shortlist stay current.
+Add a new solution under the matching topic directory, refresh the local LeetCode catalog when you want the full problem list on disk, then regenerate the README so the solved-problem index, difficulty counts, and notable-problem shortlist stay current.
+
+The downloaded catalog lives at `data/leetcode-problem-catalog.json`.
+
+```bash
+python3 scripts/download_problem_catalog.py
+```
 
 ```bash
 python3 scripts/update_readme.py
@@ -124,6 +130,11 @@ python3 -m unittest discover -s tests -v
 
 - Verifies that `README.md` already matches the generated output.
 - Exits nonzero when the README is stale, which makes it suitable for hooks or CI.
+
+`python3 scripts/download_problem_catalog.py`
+
+- Downloads the current LeetCode problem catalog and writes it to `data/leetcode-problem-catalog.json`.
+- Supports `--output <path>` if you want to write the catalog somewhere else.
 
 `python3 scripts/install_pre_commit_hook.py`
 
