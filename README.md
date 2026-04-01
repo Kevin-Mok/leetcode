@@ -12,8 +12,8 @@ The strongest signal here is not just volume. It is that the repo keeps solution
 
 | Metric | Count |
 |---|---:|
-| Solved problems | 18 |
-| Medium problems | 5 |
+| Solved problems | 19 |
+| Medium problems | 6 |
 | Easy problems | 13 |
 | Problem categories covered | 10 |
 
@@ -24,12 +24,12 @@ The strongest signal here is not just volume. It is that the repo keeps solution
 | 894. All Possible Full Binary Trees | Medium | Dynamic Programming | state modeling and subproblem decomposition |
 | 1689. Partitioning Into Minimum Number Of Deci-Binary Numbers | Medium | Greedy | greedy selection under simple constraints |
 | 1962. Remove Stones to Minimize the Total | Medium | Heap | priority-queue updates under repeated reductions |
+| 71. Simplify Path | Medium | Stack | stack-based validation and ordering rules |
 | 88. Merge Sorted Array | Easy | Array String | array mutation and pointer coordination |
 | 226. Invert Binary Tree | Easy | Binary Tree | tree recursion and traversal correctness |
 | 108. Convert Sorted Array to Binary Search Tree | Easy | Divide And Conquer | balanced recursive decomposition |
 | 383. Ransom Note | Easy | Hash Map | frequency counting and constant-time lookup reasoning |
 | 876. Middle of the Linked List | Easy | Linked List | pointer manipulation and in-place rewiring |
-| 20. Valid Parentheses | Easy | Stack | stack-based validation and ordering rules |
 | 977. Squares of a Sorted Array | Easy | Strings | two-pointer and in-place sequence mutation |
 
 ## Solved Problems By Difficulty
@@ -42,6 +42,7 @@ The strongest signal here is not just volume. It is that the repo keeps solution
 | 894. All Possible Full Binary Trees | Dynamic Programming | `dynamic-programming/894-full-binary-trees.py` | state modeling and subproblem decomposition |
 | 1689. Partitioning Into Minimum Number Of Deci-Binary Numbers | Greedy | `greedy/1689-deci-binary.py` | greedy selection under simple constraints |
 | 1962. Remove Stones to Minimize the Total | Heap | `heap/remove-stones-to-minimize-total.py` | priority-queue updates under repeated reductions |
+| 71. Simplify Path | Stack | `stack/simplify-path.py` | stack-based validation and ordering rules |
 
 ## Easy
 | Problem | Category | Repo Path | What This Demonstrates |
@@ -72,7 +73,7 @@ The strongest signal here is not just volume. It is that the repo keeps solution
 | Hash Map | 1 |
 | Heap | 1 |
 | Linked List | 3 |
-| Stack | 1 |
+| Stack | 2 |
 | Strings | 2 |
 
 ## Tech Stack And Why Chosen
