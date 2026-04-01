@@ -92,7 +92,7 @@ class ResolveProblemMetadataTests(unittest.TestCase):
         )
 
         problem = module.resolve_problem_metadata(
-            "binary-tree/minimum-depth-of-binary-tree.py",
+            "binary-tree/111-minimum-depth-of-binary-tree.py",
             {},
             client,
         )
@@ -162,7 +162,7 @@ class NotableProblemSelectionTests(unittest.TestCase):
 
         problems = [
             module.ProblemEntry(
-                repo_path="dynamic-programming/300-incr-subseq.py",
+                repo_path="dynamic-programming/300-longest-increasing-subsequence.py",
                 category="dynamic-programming",
                 frontend_id="300",
                 title="Longest Increasing Subsequence",
@@ -173,7 +173,7 @@ class NotableProblemSelectionTests(unittest.TestCase):
                 demonstrates="state modeling",
             ),
             module.ProblemEntry(
-                repo_path="dynamic-programming/894-full-binary-trees.py",
+                repo_path="dynamic-programming/894-all-possible-full-binary-trees.py",
                 category="dynamic-programming",
                 frontend_id="894",
                 title="All Possible Full Binary Trees",
@@ -206,7 +206,7 @@ class NotableProblemSelectionTests(unittest.TestCase):
                 demonstrates="tree recursion",
             ),
             module.ProblemEntry(
-                repo_path="heap/remove-stones-to-minimize-total.py",
+                repo_path="heap/1962-remove-stones-to-minimize-the-total.py",
                 category="heap",
                 frontend_id="1962",
                 title="Remove Stones to Minimize the Total",
@@ -217,7 +217,7 @@ class NotableProblemSelectionTests(unittest.TestCase):
                 demonstrates="priority queue updates",
             ),
             module.ProblemEntry(
-                repo_path="linked-list/remove-duplicates-from-sorted-list.py",
+                repo_path="linked-list/83-remove-duplicates-from-sorted-list.py",
                 category="linked-list",
                 frontend_id="83",
                 title="Remove Duplicates from Sorted List",
@@ -235,10 +235,10 @@ class NotableProblemSelectionTests(unittest.TestCase):
         self.assertEqual(
             [problem.repo_path for problem in notable],
             [
-                "dynamic-programming/894-full-binary-trees.py",
-                "heap/remove-stones-to-minimize-total.py",
+                "dynamic-programming/894-all-possible-full-binary-trees.py",
+                "heap/1962-remove-stones-to-minimize-the-total.py",
                 "binary-tree/94-binary-tree-inorder-traversal.py",
-                "linked-list/remove-duplicates-from-sorted-list.py",
+                "linked-list/83-remove-duplicates-from-sorted-list.py",
             ],
         )
 
@@ -248,7 +248,7 @@ class RenderReadmeTests(unittest.TestCase):
         module = load_update_readme_module(self)
         problems = [
             module.ProblemEntry(
-                repo_path="heap/remove-stones-to-minimize-total.py",
+                repo_path="heap/1962-remove-stones-to-minimize-the-total.py",
                 category="heap",
                 frontend_id="1962",
                 title="Remove Stones to Minimize the Total",

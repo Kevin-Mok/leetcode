@@ -4,7 +4,7 @@ from pathlib import Path
 import unittest
 
 
-SCRIPT_PATH = Path(__file__).resolve().parents[1] / "stack" / "simplify-path.py"
+SCRIPT_PATH = Path(__file__).resolve().parents[1] / "stack" / "71-simplify-path.py"
 
 
 class SimplifyPathHarnessTests(unittest.TestCase):

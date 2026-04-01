@@ -23,8 +23,8 @@ The strongest signal here is not just volume. It is that the repo keeps solution
 |---|---|---|---|
 | 894. All Possible Full Binary Trees | Medium | Dynamic Programming | state modeling and subproblem decomposition |
 | 1689. Partitioning Into Minimum Number Of Deci-Binary Numbers | Medium | Greedy | greedy selection under simple constraints |
-| 1962. Remove Stones to Minimize the Total | Medium | Heap | priority-queue updates under repeated reductions |
-| 71. Simplify Path | Medium | Stack | 0 ms runtime, 100th-percentile result on a Medium stack problem |
+| 1962. Remove Stones to Minimize the Total | Medium | Heap | priority-queue updates under repeated operations |
+| 71. Simplify Path | Medium | Stack | stack-based validation and ordering rules |
 | 88. Merge Sorted Array | Easy | Array String | array mutation and pointer coordination |
 | 226. Invert Binary Tree | Easy | Binary Tree | tree recursion and traversal correctness |
 | 108. Convert Sorted Array to Binary Search Tree | Easy | Divide And Conquer | balanced recursive decomposition |
@@ -37,26 +37,26 @@ The strongest signal here is not just volume. It is that the repo keeps solution
 ## Medium
 | Problem | Category | Repo Path | What This Demonstrates |
 |---|---|---|---|
-| 300. Longest Increasing Subsequence | Dynamic Programming | `dynamic-programming/300-incr-subseq.py` | state modeling and subproblem decomposition |
+| 300. Longest Increasing Subsequence | Dynamic Programming | `dynamic-programming/300-longest-increasing-subsequence.py` | state modeling and subproblem decomposition |
 | 322. Coin Change | Dynamic Programming | `dynamic-programming/322-coin-change.py` | state modeling and subproblem decomposition |
-| 894. All Possible Full Binary Trees | Dynamic Programming | `dynamic-programming/894-full-binary-trees.py` | state modeling and subproblem decomposition |
-| 1689. Partitioning Into Minimum Number Of Deci-Binary Numbers | Greedy | `greedy/1689-deci-binary.py` | greedy selection under simple constraints |
-| 1962. Remove Stones to Minimize the Total | Heap | `heap/remove-stones-to-minimize-total.py` | priority-queue updates under repeated reductions |
-| 71. Simplify Path | Stack | `stack/simplify-path.py` | 0 ms runtime, 100th-percentile result on a Medium stack problem |
+| 894. All Possible Full Binary Trees | Dynamic Programming | `dynamic-programming/894-all-possible-full-binary-trees.py` | state modeling and subproblem decomposition |
+| 1689. Partitioning Into Minimum Number Of Deci-Binary Numbers | Greedy | `greedy/1689-partitioning-into-minimum-number-of-deci-binary-numbers.py` | greedy selection under simple constraints |
+| 1962. Remove Stones to Minimize the Total | Heap | `heap/1962-remove-stones-to-minimize-the-total.py` | priority-queue updates under repeated operations |
+| 71. Simplify Path | Stack | `stack/71-simplify-path.py` | stack-based validation and ordering rules |
 
 ## Easy
 | Problem | Category | Repo Path | What This Demonstrates |
 |---|---|---|---|
 | 88. Merge Sorted Array | Array String | `array-string/88-merge-sorted-array.py` | array mutation and pointer coordination |
 | 94. Binary Tree Inorder Traversal | Binary Tree | `binary-tree/94-binary-tree-inorder-traversal.py` | tree recursion and traversal correctness |
-| 111. Minimum Depth of Binary Tree | Binary Tree | `binary-tree/minimum-depth-of-binary-tree.py` | base-case handling and shallowest-path recursion |
+| 111. Minimum Depth of Binary Tree | Binary Tree | `binary-tree/111-minimum-depth-of-binary-tree.py` | tree recursion and traversal correctness |
 | 226. Invert Binary Tree | Binary Tree | `binary-tree/226-invert-binary-tree.py` | tree recursion and traversal correctness |
-| 108. Convert Sorted Array to Binary Search Tree | Divide And Conquer | `divide-and-conquer/108-sorted-to-bst.py` | balanced recursive decomposition |
-| 2160. Minimum Sum of Four Digit Number After Splitting Digits | Greedy | `greedy/2160-min-sum.py` | greedy selection under simple constraints |
+| 108. Convert Sorted Array to Binary Search Tree | Divide And Conquer | `divide-and-conquer/108-convert-sorted-array-to-binary-search-tree.py` | balanced recursive decomposition |
+| 2160. Minimum Sum of Four Digit Number After Splitting Digits | Greedy | `greedy/2160-minimum-sum-of-four-digit-number-after-splitting-digits.py` | greedy selection under simple constraints |
 | 383. Ransom Note | Hash Map | `hash-map/383-ransom-note.py` | frequency counting and constant-time lookup reasoning |
 | 21. Merge Two Sorted Lists | Linked List | `linked-list/21-merge-two-sorted-lists.py` | pointer manipulation and in-place rewiring |
-| 83. Remove Duplicates from Sorted List | Linked List | `linked-list/remove-duplicates-from-sorted-list.py` | single-pass pointer rewiring on sorted linked lists |
-| 876. Middle of the Linked List | Linked List | `linked-list/middle-of-the-linked-list.py` | pointer manipulation and in-place rewiring |
+| 83. Remove Duplicates from Sorted List | Linked List | `linked-list/83-remove-duplicates-from-sorted-list.py` | pointer manipulation and in-place rewiring |
+| 876. Middle of the Linked List | Linked List | `linked-list/876-middle-of-the-linked-list.py` | pointer manipulation and in-place rewiring |
 | 20. Valid Parentheses | Stack | `stack/20-valid-parentheses.py` | stack-based validation and ordering rules |
 | 344. Reverse String | Strings | `strings/344-reverse-string.py` | two-pointer and in-place sequence mutation |
 | 977. Squares of a Sorted Array | Strings | `strings/977-squares-of-a-sorted-array.py` | two-pointer and in-place sequence mutation |
