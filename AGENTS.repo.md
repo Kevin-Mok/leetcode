@@ -21,3 +21,9 @@ These rules only add stricter local guidance and do not relax higher-precedence 
 - Prefer the smallest useful nudge over a step-by-step walkthrough.
 - Do not give multiple hints at once unless the user explicitly asks for more detail.
 - When practical, focus on whether the current approach violates the prompt requirements before suggesting new implementation details.
+
+## README Upkeep
+
+- Every time a problem is solved or added to the repo, refresh the root `README.md` in the same change.
+- Use `python3 scripts/update_readme.py` as the source of truth for README updates instead of editing the generated README by hand.
+- If a new problem filename cannot be resolved cleanly to a LeetCode problem, add the required metadata to `scripts/readme_problem_overrides.json` before regenerating the README.
