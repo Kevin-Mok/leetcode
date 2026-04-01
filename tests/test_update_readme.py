@@ -330,12 +330,22 @@ class RenderReadmeTests(unittest.TestCase):
         self.assertNotIn("| Hard problems |", rendered)
         self.assertLess(rendered.index("## Medium"), rendered.index("## Easy"))
         self.assertIn("| Solved problems | 2 |", rendered)
+        self.assertIn("| Runnable local harnesses | 2 |", rendered)
+        self.assertIn("| Problems with detected regression coverage | 2 |", rendered)
         self.assertIn("Remove Stones to Minimize the Total", rendered)
         self.assertIn("Binary Tree Inorder Traversal", rendered)
         self.assertIn("What This Demonstrates", rendered)
         self.assertIn("python3 scripts/update_readme.py", rendered)
         self.assertIn("python3 scripts/download_problem_catalog.py", rendered)
         self.assertIn("data/leetcode-problem-catalog.json", rendered)
+        self.assertIn("This repository turns LeetCode practice into recruiter-facing proof", rendered)
+        self.assertIn("arrays and strings, stacks, hash maps, heaps, linked lists, binary trees", rendered)
+        self.assertIn("The README is generated from tracked solution files plus live LeetCode metadata", rendered)
+        self.assertIn("## Recruiter Proof Surface", rendered)
+        self.assertIn("Generated metrics and notable-problem tables turn the repo into a durable evidence surface", rendered)
+        self.assertIn("Generated README workflow backed by tracked files and live difficulty metadata", rendered)
+        self.assertNotIn("## Why This Repo Is Worth Reviewing", rendered)
+        self.assertNotIn("## Recruiter Notes", rendered)
 
 
 class MainCheckModeTests(unittest.TestCase):

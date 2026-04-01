@@ -402,6 +402,8 @@ def render_metric_table(stats):
     lines.extend(
         [
             f"| Problem categories covered | {stats['tracked_categories']} |",
+            f"| Runnable local harnesses | {stats['harness_count']} |",
+            f"| Problems with detected regression coverage | {stats['regression_test_count']} |",
         ]
     )
     return "\n".join(lines)
@@ -465,11 +467,17 @@ def render_readme(problems, regression_test_count):
             "",
             "# LeetCode Practice Repository",
             "",
-            "This repository is a recruiter-friendly archive of executable LeetCode work, not a screenshot dump or a notebook of partial ideas. It shows solved problems as runnable Python files, grouped by official LeetCode difficulty so another engineer can quickly see breadth, verification habits, and the kinds of interview problems already shipped.",
+            "This repository turns LeetCode practice into recruiter-facing proof: executable Python solutions, local verification harnesses, and official difficulty grouping that make problem-solving breadth easy to inspect instead of hand-wave. The proof surface is technical rather than presentational: arrays and strings, stacks, hash maps, heaps, linked lists, binary trees, divide-and-conquer recursion, and dynamic-programming state transitions are all represented as runnable Python files instead of screenshots or one-line claims.",
             "",
-            "## Why This Repo Is Worth Reviewing",
+            "The README is generated from tracked solution files plus live LeetCode metadata, so solved counts, difficulty buckets, category coverage, and notable examples stay aligned with the repository instead of drifting as more problems get added.",
             "",
-            "The strongest signal here is not just volume. It is that the repo keeps solutions inspectable as code, keeps many problems runnable with local harnesses, and now tracks them by official LeetCode difficulty so a recruiter or interviewer can scan from hardest proof down to easier coverage.",
+            "## Recruiter Proof Surface",
+            "",
+            "- Arrays, strings, and two-pointer work show in-place mutation and index coordination under interview-style constraints.",
+            "- Stacks, hash maps, and heaps show the standard lookup and ordering primitives that recur in screening rounds.",
+            "- Linked lists and binary trees show pointer rewiring, traversal correctness, and recursive decomposition without framework scaffolding.",
+            "- Dynamic programming and divide-and-conquer entries show state modeling, subproblem reuse, and recurrence-driven reasoning.",
+            "- Generated metrics and notable-problem tables turn the repo into a durable evidence surface instead of a manually curated brag list.",
             "",
             "## Snapshot Metrics",
             "",
@@ -489,10 +497,10 @@ def render_readme(problems, regression_test_count):
             "",
             "## Tech Stack And Why Chosen",
             "",
-            "- Python 3: concise enough for interview-style implementation work and already aligned with LeetCode's common execution model.",
-            "- Plain scripts plus lightweight classes: keeps each solution close to the original platform signature instead of hiding logic inside framework structure.",
-            "- Standard-library `unittest`: gives the repo a small regression surface without introducing external dependencies.",
-            "- A generated README workflow: turns the repository into a living portfolio surface instead of a stale list that has to be updated by hand.",
+            "- Python 3: concise enough for interview-style implementation work, but still explicit enough to show pointer logic, recursion, heap operations, and dynamic-programming table updates clearly.",
+            "- Plain scripts plus lightweight classes: keeps each solution close to the LeetCode function or class signature, which makes the algorithmic core easy to inspect without framework noise.",
+            "- Standard-library `unittest`: provides lightweight regression checks for the local harnesses and README generator without adding dependency overhead.",
+            "- Generated README workflow backed by tracked files and live difficulty metadata: keeps the recruiter-facing proof synchronized with the actual codebase instead of relying on manual README edits.",
             "",
             "## Install Or Bootstrap",
             "",
@@ -563,10 +571,6 @@ def render_readme(problems, regression_test_count):
             "- `discover` finds matching tests automatically.",
             "- `-s tests` limits discovery to the repo's `tests/` directory.",
             "- `-v` prints verbose test names and results.",
-            "",
-            "## Recruiter Notes",
-            "",
-            "This is intentionally not a framework-heavy application. The value is visible problem solving: recursion, dynamic programming, heap operations, pointer rewiring, and small verification loops that show how the code behaves outside the LeetCode UI.",
             "",
         ]
     )
