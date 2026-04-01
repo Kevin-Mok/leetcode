@@ -18,6 +18,9 @@ These rules only add stricter local guidance and do not relax higher-precedence 
 - For LeetCode problem-solving help in this repo, do not write the full solution by default.
 - Only provide a full solution when the user explicitly asks for one in a later prompt.
 - Give as little hinting as possible by default.
+- If the user asks about a language feature, library API, or utility function for a LeetCode problem, answer that narrow question without adding solution-adjacent hints.
+- If the user explicitly says not to give hints related to the solution, do not point toward the repo's implementation or suggest next steps that narrow the algorithmic approach.
+- If the user later asks for the efficient solution directly, provide it plainly without scaffolding, intermediate hints, or references to the repo's actual solution file.
 - Prefer the smallest useful nudge over a step-by-step walkthrough.
 - Do not give multiple hints at once unless the user explicitly asks for more detail.
 - When practical, focus on whether the current approach violates the prompt requirements before suggesting new implementation details.
