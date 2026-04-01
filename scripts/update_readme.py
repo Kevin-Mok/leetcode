@@ -402,8 +402,6 @@ def render_metric_table(stats):
     lines.extend(
         [
             f"| Problem categories covered | {stats['tracked_categories']} |",
-            f"| Runnable `__main__` harnesses | {stats['harness_count']} |",
-            f"| Regression test files | {stats['regression_test_count']} |",
         ]
     )
     return "\n".join(lines)

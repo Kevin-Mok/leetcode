@@ -16,8 +16,6 @@ The strongest signal here is not just volume. It is that the repo keeps solution
 | Medium problems | 5 |
 | Easy problems | 12 |
 | Problem categories covered | 10 |
-| Runnable `__main__` harnesses | 15 |
-| Regression test files | 3 |
 
 ## Notable Problems
 
