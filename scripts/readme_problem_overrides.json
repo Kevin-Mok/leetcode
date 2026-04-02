@@ -1,4 +1,10 @@
 {
+  "queue/moving-average-from-data-stream.py": {
+    "frontend_id": 346,
+    "title_slug": "moving-average-from-data-stream",
+    "category": "queue",
+    "demonstrates": "fixed-size stream windows and rolling-average updates"
+  },
   "stack/71-simplify-path.py": {
     "demonstrates": "0 ms runtime, 100th-percentile result on a Medium stack problem"
   }
