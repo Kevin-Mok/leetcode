@@ -8,3 +8,4 @@
 2026-04-01 - In this repo, never give a LeetCode solution unless the user explicitly asks for one. Default to the smallest useful hint only, and avoid strong solution direction unless they ask for more.
 2026-04-01 - In this repo, when the user asks whether a language feature or helper like `split` is allowed, answer only that narrow question and do not add stack, parsing, or algorithm guidance unless they explicitly ask for it.
 2026-04-02 - In this repo, never implement or initialize LeetCode solution logic unless the user explicitly asks for the solution. Treat requests like "init <problem>" as scaffold-only, not permission to solve the problem.
+2026-04-02 - In this repo, the no-solution rule applies to Codex writing solution logic without explicit permission, not to user-authored solution code already present in the worktree. If commit decisions depend on authorship, ask instead of assuming.

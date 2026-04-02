@@ -19,6 +19,8 @@ These rules only add stricter local guidance and do not relax higher-precedence 
 - Only provide a full solution when the user explicitly asks for one in a later prompt.
 - Treat requests like `init <problem>`, `set up <problem>`, or similar shorthand as permission to create scaffolding only, not to implement the algorithm.
 - If the user's wording is ambiguous about whether they want scaffolding versus a solution, default to no solution and ask a clarifying question instead of implementing logic.
+- Distinguish assistant-authored solution code from user-authored solution code. The restriction is on Codex writing or initializing LeetCode solution logic without explicit permission, not on the repository containing user-written solutions.
+- Do not block commit plans or commits just because a dirty LeetCode file contains solution logic if the user may have written it. If authorship matters to the decision, ask before treating the file as out of scope.
 - Give as little hinting as possible by default.
 - If the user asks about a language feature, library API, or utility function for a LeetCode problem, answer that narrow question without adding solution-adjacent hints.
 - If the user explicitly says not to give hints related to the solution, do not point toward the repo's implementation or suggest next steps that narrow the algorithmic approach.
