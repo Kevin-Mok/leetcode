@@ -20,9 +20,9 @@ class MovingAverage:
 
 
 if __name__ == "__main__":
-    size = 1
-    values = [4, 0]
-    expected = [4.0, 0.0]
+    size = 3
+    values = [1, 10, 3, 5]
+    expected = [1.0, 5.5, 14 / 3, 6.0]
 
     print("Window size:", size)
     print("Input values:", values)

@@ -38,7 +38,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | 108. Convert Sorted Array to Binary Search Tree | Easy | Divide And Conquer | balanced recursive decomposition |
 | 383. Ransom Note | Easy | Hash Map | frequency counting and constant-time lookup reasoning |
 | 876. Middle of the Linked List | Easy | Linked List | pointer manipulation and in-place rewiring |
-| 346. Moving Average from Data Stream | Easy | Queue | fixed-size stream windows and rolling-average updates |
+| 346. Moving Average from Data Stream | Easy | Queue | 3 ms runtime, 82.25th-percentile speed, 22.10 MB memory, 92.75th-percentile memory efficiency |
 | 977. Squares of a Sorted Array | Easy | Strings | two-pointer and in-place sequence mutation |
 
 ## Solved Problems By Difficulty
@@ -66,7 +66,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | 21. Merge Two Sorted Lists | Linked List | `linked-list/21-merge-two-sorted-lists.py` | pointer manipulation and in-place rewiring |
 | 83. Remove Duplicates from Sorted List | Linked List | `linked-list/83-remove-duplicates-from-sorted-list.py` | pointer manipulation and in-place rewiring |
 | 876. Middle of the Linked List | Linked List | `linked-list/876-middle-of-the-linked-list.py` | pointer manipulation and in-place rewiring |
-| 346. Moving Average from Data Stream | Queue | `queue/moving-average-from-data-stream.py` | fixed-size stream windows and rolling-average updates |
+| 346. Moving Average from Data Stream | Queue | `queue/moving-average-from-data-stream.py` | 3 ms runtime, 82.25th-percentile speed, 22.10 MB memory, 92.75th-percentile memory efficiency |
 | 20. Valid Parentheses | Stack | `stack/20-valid-parentheses.py` | stack-based validation and ordering rules |
 | 344. Reverse String | Strings | `strings/344-reverse-string.py` | two-pointer and in-place sequence mutation |
 | 977. Squares of a Sorted Array | Strings | `strings/977-squares-of-a-sorted-array.py` | two-pointer and in-place sequence mutation |

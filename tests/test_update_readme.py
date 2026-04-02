@@ -244,7 +244,7 @@ class NotableProblemSelectionTests(unittest.TestCase):
 
 
 class CollectProblemEntriesTests(unittest.TestCase):
-    def test_repo_override_file_preserves_custom_simplify_path_demonstrates(self):
+    def test_repo_override_file_preserves_custom_demonstrates(self):
         repo_root = Path(__file__).resolve().parents[1]
         overrides = load_update_readme_module(self).load_overrides(
             repo_root / "scripts" / "readme_problem_overrides.json"
@@ -253,6 +253,10 @@ class CollectProblemEntriesTests(unittest.TestCase):
         self.assertEqual(
             overrides.get("stack/71-simplify-path.py", {}).get("demonstrates"),
             "0 ms runtime, 100th-percentile result on a Medium stack problem",
+        )
+        self.assertEqual(
+            overrides.get("queue/moving-average-from-data-stream.py", {}).get("demonstrates"),
+            "3 ms runtime, 82.25th-percentile speed, 22.10 MB memory, 92.75th-percentile memory efficiency",
         )
 
     def test_collect_problem_entries_preserves_custom_demonstrates_override(self):
