@@ -16,9 +16,12 @@ Create a local git worktree for the current `search-insert-position` problem and
 - [x] Add the local worktree ignore rule and create this ExecPlan.
 - [x] Create a local worktree on a WIP branch for `search-insert-position`.
 - [x] Run the README gate and regenerate `README.md` if required by the repo rules.
-- [ ] Commit the scoped WIP changes with a Conventional Commit message that says the problem is incomplete.
-- [ ] Push the branch if the workflow remains a single-commit flow and no repo conflict blocks it.
+- [x] Commit the scoped WIP changes with a Conventional Commit message that says the problem is incomplete.
+- [x] Push the branch if the workflow remains a single-commit flow and no repo conflict blocks it.
 
 ## Review
 
-Pending.
+- Created local worktree at `.worktrees/wip-search-insert-position`.
+- Baseline tests passed in the clean worktree before applying the WIP files.
+- Regenerated `README.md` so the new tracked problem appears in repo metrics and listings.
+- Committed the incomplete state as `55dba5e` on branch `wip/search-insert-position` and pushed it to `origin`.
