@@ -17,6 +17,8 @@ These rules only add stricter local guidance and do not relax higher-precedence 
 
 - For LeetCode problem-solving help in this repo, do not write the full solution by default.
 - Only provide a full solution when the user explicitly asks for one in a later prompt.
+- Treat requests like `init <problem>`, `set up <problem>`, or similar shorthand as permission to create scaffolding only, not to implement the algorithm.
+- If the user's wording is ambiguous about whether they want scaffolding versus a solution, default to no solution and ask a clarifying question instead of implementing logic.
 - Give as little hinting as possible by default.
 - If the user asks about a language feature, library API, or utility function for a LeetCode problem, answer that narrow question without adding solution-adjacent hints.
 - If the user explicitly says not to give hints related to the solution, do not point toward the repo's implementation or suggest next steps that narrow the algorithmic approach.
