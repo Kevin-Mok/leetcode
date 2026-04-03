@@ -17,11 +17,17 @@ These rules only add stricter local guidance and do not relax higher-precedence 
 
 - For LeetCode problem-solving help in this repo, do not write the full solution by default.
 - Only provide a full solution when the user explicitly asks for one in a later prompt.
+- Treat review-style requests such as `am I close`, `is this right`, `what am I missing`, or `why doesn't this work` as evaluation-only by default.
+- For those review-style requests, do not provide replacement solution code or a clean rewrite unless the user explicitly asks for the solution.
 - Treat requests like `init <problem>`, `set up <problem>`, or similar shorthand as permission to create scaffolding only, not to implement the algorithm.
 - If the user's wording is ambiguous about whether they want scaffolding versus a solution, default to no solution and ask a clarifying question instead of implementing logic.
 - Distinguish assistant-authored solution code from user-authored solution code. The restriction is on Codex writing or initializing LeetCode solution logic without explicit permission, not on the repository containing user-written solutions.
 - Do not block commit plans or commits just because a dirty LeetCode file contains solution logic if the user may have written it. If authorship matters to the decision, ask before treating the file as out of scope.
 - Give as little hinting as possible by default.
+- When giving LeetCode hints on an existing solution file in this repo, prefer adding or updating inline `Hint:` comments in the file so the guidance stays attached to the code.
+- Do not rely on chat-only guidance when a short inline comment can carry the same hint more effectively.
+- When refreshing hints, replace stale or superseded `Hint:` comments instead of stacking multiple generations of guidance.
+- If the user asks for help again, refresh the current inline comments so they reflect the newest smallest-useful nudge.
 - If the user asks about a language feature, library API, or utility function for a LeetCode problem, answer that narrow question without adding solution-adjacent hints.
 - If the user explicitly says not to give hints related to the solution, do not point toward the repo's implementation or suggest next steps that narrow the algorithmic approach.
 - If the user later asks for the efficient solution directly, provide it plainly without scaffolding, intermediate hints, or references to the repo's actual solution file.

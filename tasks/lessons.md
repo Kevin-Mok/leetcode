@@ -9,3 +9,7 @@
 2026-04-01 - In this repo, when the user asks whether a language feature or helper like `split` is allowed, answer only that narrow question and do not add stack, parsing, or algorithm guidance unless they explicitly ask for it.
 2026-04-02 - In this repo, never implement or initialize LeetCode solution logic unless the user explicitly asks for the solution. Treat requests like "init <problem>" as scaffold-only, not permission to solve the problem.
 2026-04-02 - In this repo, the no-solution rule applies to Codex writing solution logic without explicit permission, not to user-authored solution code already present in the worktree. If commit decisions depend on authorship, ask instead of assuming.
+2026-04-03 - In this repo, prompts like "am I close?", "is this right?", or "what am I missing?" are evaluation requests, not permission to provide the answer. Respond with a minimal nudge or issue callout unless the user explicitly asks for the solution.
+2026-04-03 - In this repo, when the user asks for LeetCode help on an existing solution file, put the hint into inline `Hint:` comments in the file when practical instead of relying only on chat.
+2026-04-03 - In this repo, refresh inline LeetCode `Hint:` comments when the user asks for help again, and delete stale or superseded hints instead of stacking them.
+2026-04-03 - When manually editing files in this repo, use the dedicated `apply_patch` tool directly instead of invoking it through `exec_command`.
