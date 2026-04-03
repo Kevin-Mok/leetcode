@@ -18,11 +18,11 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 
 | Metric | Count |
 |---|---:|
-| Solved problems | 20 |
+| Solved problems | 21 |
 | Medium problems | 6 |
-| Easy problems | 14 |
-| Problem categories covered | 11 |
-| Runnable local harnesses | 18 |
+| Easy problems | 15 |
+| Problem categories covered | 12 |
+| Runnable local harnesses | 19 |
 | Problems with detected regression coverage | 6 |
 
 ## Notable Problems
@@ -34,6 +34,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | 1962. Remove Stones to Minimize the Total | Medium | Heap | priority-queue updates under repeated operations |
 | 71. Simplify Path | Medium | Stack | 0 ms runtime, 100th-percentile result on a Medium stack problem |
 | 88. Merge Sorted Array | Easy | Array String | array mutation and pointer coordination |
+| 35. Search Insert Position | Easy | Binary Search | problem framing without framework overhead |
 | 226. Invert Binary Tree | Easy | Binary Tree | tree recursion and traversal correctness |
 | 108. Convert Sorted Array to Binary Search Tree | Easy | Divide And Conquer | balanced recursive decomposition |
 | 383. Ransom Note | Easy | Hash Map | frequency counting and constant-time lookup reasoning |
@@ -57,6 +58,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | Problem | Category | Repo Path | What This Demonstrates |
 |---|---|---|---|
 | 88. Merge Sorted Array | Array String | `array-string/88-merge-sorted-array.py` | array mutation and pointer coordination |
+| 35. Search Insert Position | Binary Search | `binary-search/search-insert-position.py` | problem framing without framework overhead |
 | 94. Binary Tree Inorder Traversal | Binary Tree | `binary-tree/94-binary-tree-inorder-traversal.py` | tree recursion and traversal correctness |
 | 111. Minimum Depth of Binary Tree | Binary Tree | `binary-tree/111-minimum-depth-of-binary-tree.py` | tree recursion and traversal correctness |
 | 226. Invert Binary Tree | Binary Tree | `binary-tree/226-invert-binary-tree.py` | tree recursion and traversal correctness |
@@ -66,7 +68,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | 21. Merge Two Sorted Lists | Linked List | `linked-list/21-merge-two-sorted-lists.py` | pointer manipulation and in-place rewiring |
 | 83. Remove Duplicates from Sorted List | Linked List | `linked-list/83-remove-duplicates-from-sorted-list.py` | pointer manipulation and in-place rewiring |
 | 876. Middle of the Linked List | Linked List | `linked-list/876-middle-of-the-linked-list.py` | pointer manipulation and in-place rewiring |
-| 346. Moving Average from Data Stream | Queue | `queue/moving-average-from-data-stream.py` | 3 ms runtime, 82.25th-percentile speed, 22.10 MB memory, 92.75th-percentile memory efficiency |
+| 346. Moving Average from Data Stream | Queue | `queue/346-moving-average-from-data-stream.py` | 3 ms runtime, 82.25th-percentile speed, 22.10 MB memory, 92.75th-percentile memory efficiency |
 | 20. Valid Parentheses | Stack | `stack/20-valid-parentheses.py` | stack-based validation and ordering rules |
 | 344. Reverse String | Strings | `strings/344-reverse-string.py` | two-pointer and in-place sequence mutation |
 | 977. Squares of a Sorted Array | Strings | `strings/977-squares-of-a-sorted-array.py` | two-pointer and in-place sequence mutation |
@@ -76,6 +78,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | Category | Problems |
 |---|---:|
 | Array String | 1 |
+| Binary Search | 1 |
 | Binary Tree | 3 |
 | Divide And Conquer | 1 |
 | Dynamic Programming | 3 |

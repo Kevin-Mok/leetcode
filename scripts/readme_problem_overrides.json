@@ -1,9 +1,14 @@
 {
-  "queue/moving-average-from-data-stream.py": {
+  "queue/346-moving-average-from-data-stream.py": {
     "frontend_id": 346,
     "title_slug": "moving-average-from-data-stream",
     "category": "queue",
     "demonstrates": "3 ms runtime, 82.25th-percentile speed, 22.10 MB memory, 92.75th-percentile memory efficiency"
+  },
+  "binary-search/search-insert-position.py": {
+    "frontend_id": 35,
+    "title_slug": "search-insert-position",
+    "category": "binary-search"
   },
   "stack/71-simplify-path.py": {
     "demonstrates": "0 ms runtime, 100th-percentile result on a Medium stack problem"
