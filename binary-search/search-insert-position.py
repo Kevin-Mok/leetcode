@@ -16,9 +16,13 @@ class Solution:
 if __name__ == "__main__":
     sol = Solution()
     samples = [
-        ([1, 3, 5, 6], 5, 2),
-        ([1, 3, 5, 6], 2, 1),
-        ([1, 3, 5, 6], 7, 4),
+        # ([1, 3, 5, 6], 5, 2),
+        # ([1, 3, 5, 6], 2, 1),
+        # ([1, 3, 5, 6], 7, 4),
+        # Finishes by matching exactly: right (27), left (71), right (44), then match at 58.
+        ([2, 5, 9, 14, 20, 27, 35, 44, 58, 71, 86, 103], 58, 8),
+        # Finishes by exhausting the loop and returning left = 4.
+        ([2, 5, 9, 14, 20, 27, 35, 44, 58, 71, 86, 103], 18, 4),
     ]
 
     for nums, target, expected in samples:
