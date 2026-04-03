@@ -29,6 +29,7 @@ These rules only add stricter local guidance and do not relax higher-precedence 
 - When refreshing hints, replace stale or superseded `Hint:` comments instead of stacking multiple generations of guidance.
 - If the user asks for help again, refresh the current inline comments so they reflect the newest smallest-useful nudge.
 - If the user asks about a language feature, library API, or utility function for a LeetCode problem, answer that narrow question without adding solution-adjacent hints.
+- If the user asks only for a LeetCode problem's difficulty, reply with the difficulty only and do not include hints, approach direction, or any solution-adjacent guidance.
 - If the user explicitly says not to give hints related to the solution, do not point toward the repo's implementation or suggest next steps that narrow the algorithmic approach.
 - If the user later asks for the efficient solution directly, provide it plainly without scaffolding, intermediate hints, or references to the repo's actual solution file.
 - Prefer the smallest useful nudge over a step-by-step walkthrough.

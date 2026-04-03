@@ -14,3 +14,6 @@
 2026-04-03 - In this repo, refresh inline LeetCode `Hint:` comments when the user asks for help again, and delete stale or superseded hints instead of stacking them.
 2026-04-03 - When manually editing files in this repo, use the dedicated `apply_patch` tool directly instead of invoking it through `exec_command`.
 2026-04-03 - In this repo, when committing a LeetCode solution, include the raw problem text file that captures the prompt examples and expected outputs in the same commit scope.
+2026-04-03 - In this repo, when the user asks for additional examples in a harness, preserve the existing examples by commenting them out instead of deleting them.
+2026-04-03 - In this repo, when the user asks for a LeetCode hint, give only the next minimal hint. Do not include a broader explanation or multiple steps unless they explicitly ask for more.
+2026-04-03 - In this repo, when the user asks only for a LeetCode problem's difficulty, answer with just the difficulty and avoid any solution direction or hinting.
