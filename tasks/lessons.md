@@ -13,3 +13,4 @@
 2026-04-03 - In this repo, when the user asks for LeetCode help on an existing solution file, put the hint into inline `Hint:` comments in the file when practical instead of relying only on chat.
 2026-04-03 - In this repo, refresh inline LeetCode `Hint:` comments when the user asks for help again, and delete stale or superseded hints instead of stacking them.
 2026-04-03 - When manually editing files in this repo, use the dedicated `apply_patch` tool directly instead of invoking it through `exec_command`.
+2026-04-03 - In this repo, when committing a LeetCode solution, include the raw problem text file that captures the prompt examples and expected outputs in the same commit scope.
