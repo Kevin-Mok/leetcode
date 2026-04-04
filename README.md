@@ -18,11 +18,11 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 
 | Metric | Count |
 |---|---:|
-| Solved problems | 22 |
+| Solved problems | 23 |
 | Medium problems | 6 |
-| Easy problems | 16 |
+| Easy problems | 17 |
 | Problem categories covered | 12 |
-| Runnable local harnesses | 20 |
+| Runnable local harnesses | 21 |
 | Problems with detected regression coverage | 7 |
 
 ## Notable Problems
@@ -37,7 +37,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | 2389. Longest Subsequence With Limited Sum | Easy | Binary Search | problem framing without framework overhead |
 | 226. Invert Binary Tree | Easy | Binary Tree | tree recursion and traversal correctness |
 | 108. Convert Sorted Array to Binary Search Tree | Easy | Divide And Conquer | balanced recursive decomposition |
-| 383. Ransom Note | Easy | Hash Map | frequency counting and constant-time lookup reasoning |
+| 1832. Check if the Sentence Is Pangram | Easy | Hash Map | frequency counting and constant-time lookup reasoning |
 | 876. Middle of the Linked List | Easy | Linked List | pointer manipulation and in-place rewiring |
 | 346. Moving Average from Data Stream | Easy | Queue | 3 ms runtime, 82.25th-percentile speed, 22.10 MB memory, 92.75th-percentile memory efficiency |
 | 977. Squares of a Sorted Array | Easy | Strings | two-pointer and in-place sequence mutation |
@@ -66,6 +66,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | 108. Convert Sorted Array to Binary Search Tree | Divide And Conquer | `divide-and-conquer/108-convert-sorted-array-to-binary-search-tree.py` | balanced recursive decomposition |
 | 2160. Minimum Sum of Four Digit Number After Splitting Digits | Greedy | `greedy/2160-minimum-sum-of-four-digit-number-after-splitting-digits.py` | greedy selection under simple constraints |
 | 383. Ransom Note | Hash Map | `hash-map/383-ransom-note.py` | frequency counting and constant-time lookup reasoning |
+| 1832. Check if the Sentence Is Pangram | Hash Map | `hash-map/1832-check-if-the-sentence-is-pangram.py` | frequency counting and constant-time lookup reasoning |
 | 21. Merge Two Sorted Lists | Linked List | `linked-list/21-merge-two-sorted-lists.py` | pointer manipulation and in-place rewiring |
 | 83. Remove Duplicates from Sorted List | Linked List | `linked-list/83-remove-duplicates-from-sorted-list.py` | pointer manipulation and in-place rewiring |
 | 876. Middle of the Linked List | Linked List | `linked-list/876-middle-of-the-linked-list.py` | pointer manipulation and in-place rewiring |
@@ -84,7 +85,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | Divide And Conquer | 1 |
 | Dynamic Programming | 3 |
 | Greedy | 2 |
-| Hash Map | 1 |
+| Hash Map | 2 |
 | Heap | 1 |
 | Linked List | 3 |
 | Queue | 1 |
