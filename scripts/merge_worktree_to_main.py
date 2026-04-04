@@ -11,17 +11,20 @@ class MergeWorkflowError(RuntimeError):
     """Raised when the merge workflow cannot proceed safely."""
 
 
-def run_command(command: list[str], *, capture_output: bool = False) -> subprocess.CompletedProcess[str]:
+def run_command(
+    command: list[str], *, capture_output: bool = False, cwd: str | None = None
+) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         command,
         check=True,
         capture_output=capture_output,
+        cwd=cwd,
         text=True,
     )
 
 
-def git_output(*args: str) -> str:
-    return run_command(["git", *args], capture_output=True).stdout.strip()
+def git_output(*args: str, cwd: str | None = None) -> str:
+    return run_command(["git", *args], capture_output=True, cwd=cwd).stdout.strip()
 
 
 def ensure_clean_worktree() -> None:
@@ -70,6 +73,13 @@ def worktree_path_for_branch(branch_name: str) -> str | None:
     return None
 
 
+def require_worktree_path(branch_name: str) -> str:
+    worktree_path = worktree_path_for_branch(branch_name)
+    if worktree_path is None:
+        raise MergeWorkflowError(f"Unable to find a worktree for branch {branch_name}.")
+    return worktree_path
+
+
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Merge the current worktree branch into main and push.")
     parser.add_argument("--base-branch", default="main", help="Base branch to merge into.")
@@ -82,7 +92,6 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 def build_commands(branch_name: str, base_branch: str, problem_path: Path) -> list[list[str]]:
     return [
         ["python3", str(problem_path), "--test"],
-        ["git", "checkout", base_branch],
         ["git", "pull"],
         ["git", "merge", branch_name],
         ["git", "push", "origin", base_branch],
@@ -112,8 +121,10 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         ensure_clean_worktree()
-        for command in commands:
-            run_command(command)
+        run_command(commands[0])
+        base_worktree_path = require_worktree_path(args.base_branch)
+        for command in commands[1:]:
+            run_command(command, cwd=base_worktree_path)
 
         if not args.keep_branch:
             run_command(["git", "branch", "-d", branch_name])

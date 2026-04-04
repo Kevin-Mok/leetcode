@@ -110,7 +110,7 @@ class MergeWorkflowTests(unittest.TestCase):
                 ("git", "diff", "--name-only", "main...HEAD"),
                 ("git", "status", "--short"),
                 ("python3", "binary-search/longest-subsequence-with-limited-sum.py", "--test"),
-                ("git", "checkout", "main"),
+                ("git", "worktree", "list", "--porcelain"),
                 ("git", "pull"),
                 ("git", "merge", "wip/longest-subsequence-with-limited-sum"),
                 ("git", "push", "origin", "main"),
@@ -124,6 +124,51 @@ class MergeWorkflowTests(unittest.TestCase):
                 ),
             ],
         )
+        self.assertEqual(
+            commands[4:8],
+            [
+                (("git", "worktree", "list", "--porcelain"), None, True, True),
+                (("git", "pull"), "/repo", False, True),
+                (
+                    ("git", "merge", "wip/longest-subsequence-with-limited-sum"),
+                    "/repo",
+                    False,
+                    True,
+                ),
+                (("git", "push", "origin", "main"), "/repo", False, True),
+            ],
+        )
+
+    def test_default_flow_runs_base_branch_commands_in_its_existing_worktree(self):
+        module = load_module(self)
+        commands = []
+
+        def fake_run(command, *, cwd=None, check=True, capture_output=False, text=False):
+            commands.append((tuple(command), cwd, capture_output, text))
+            if command == ["git", "status", "--short"]:
+                return completed("")
+            if command == ["git", "branch", "--show-current"]:
+                return completed("wip/problem\n")
+            if command == ["git", "diff", "--name-only", "main...HEAD"]:
+                return completed("stack/71-simplify-path.py\n")
+            if command == ["git", "worktree", "list", "--porcelain"]:
+                return completed(
+                    "worktree /repo\n"
+                    "branch refs/heads/main\n\n"
+                    "worktree /repo/.worktrees/wip/problem\n"
+                    "branch refs/heads/wip/problem\n"
+                )
+            if command == ["git", "checkout", "main"]:
+                raise AssertionError("base branch commands should run in the main worktree")
+            return completed("")
+
+        with mock.patch.object(module.subprocess, "run", side_effect=fake_run):
+            exit_code = module.main([])
+
+        self.assertEqual(exit_code, 0)
+        self.assertIn((("git", "pull"), "/repo", False, True), commands)
+        self.assertIn((("git", "merge", "wip/problem"), "/repo", False, True), commands)
+        self.assertIn((("git", "push", "origin", "main"), "/repo", False, True), commands)
 
     def test_keep_flags_skip_cleanup_commands(self):
         module = load_module(self)
@@ -137,6 +182,8 @@ class MergeWorkflowTests(unittest.TestCase):
                 return completed("wip/problem\n")
             if command == ["git", "diff", "--name-only", "main...HEAD"]:
                 return completed("stack/71-simplify-path.py\n")
+            if command == ["git", "worktree", "list", "--porcelain"]:
+                return completed("worktree /repo\nbranch refs/heads/main\n")
             return completed("")
 
         with mock.patch.object(module.subprocess, "run", side_effect=fake_run):
@@ -144,7 +191,6 @@ class MergeWorkflowTests(unittest.TestCase):
 
         self.assertEqual(exit_code, 0)
         self.assertNotIn(("git", "branch", "-d", "wip/problem"), commands)
-        self.assertNotIn(("git", "worktree", "list", "--porcelain"), commands)
 
 
 if __name__ == "__main__":
