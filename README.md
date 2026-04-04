@@ -23,7 +23,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | Easy problems | 16 |
 | Problem categories covered | 12 |
 | Runnable local harnesses | 20 |
-| Problems with detected regression coverage | 6 |
+| Problems with detected regression coverage | 7 |
 
 ## Notable Problems
 
@@ -134,6 +134,12 @@ Run the current regression checks:
 python3 -m unittest discover -s tests -v
 ```
 
+Dry-run the worktree merge helper before shipping a feature branch back to `main`:
+
+```bash
+python3 scripts/merge_worktree_to_main.py --dry-run
+```
+
 ## Command Reference
 
 `python3 scripts/update_readme.py`
@@ -155,6 +161,12 @@ python3 -m unittest discover -s tests -v
 
 - Installs a local `pre-commit` hook that reruns the README generator when relevant files are staged.
 - No additional flags are required for the default install path.
+
+`python3 scripts/merge_worktree_to_main.py`
+
+- Verifies the latest changed LeetCode solution file against its local `--test` harness before merging the current worktree branch into `main` and pushing `origin main`.
+- Supports `--dry-run` to print the exact merge sequence without mutating git state.
+- Supports `--keep-branch`, `--keep-worktree`, and `--base-branch <name>` when you want to preserve cleanup state or target a different base branch.
 
 `python3 <path-to-solution>.py`
 
