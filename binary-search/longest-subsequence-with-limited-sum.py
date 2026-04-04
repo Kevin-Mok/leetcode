@@ -42,53 +42,23 @@ class Solution:
         # Good first step: if you want the longest subsequence under a sum limit,
         # taking the smallest values first is always optimal.
         sorted_nums = nums
+        cur_sum = 0
+        nums_subseq_sums = []
+        for num in nums:
+            cur_sum += num
+            nums_subseq_sums.append(cur_sum)
 
-        # Hint: the binary-search target should usually be "how many smallest
-        # numbers can I afford?", not the raw values themselves.
-        #
-        # A common setup is:
-        # 1. Build prefix sums of sorted_nums.
-        # 2. For each query, binary search for the rightmost prefix sum <= query.
-        # 3. That index (+ 1) is the answer length.
         max_subseq = []
         for max_sum in queries:
-            # Hint: this `right` pointer is currently being treated like both an
-            # index and an answer length. Pick one meaning and keep it consistent.
-            right = len(sorted_nums) - 1
-
-            # Hint: slicing and calling sum(...) inside the loop makes the search
-            # harder to reason about. Prefix sums let each midpoint check be O(1).
-            nums_subseq = sorted_nums[:right]
-            nums_subseq_sum = sum(nums_subseq)
-
-            # Hint: this should probably add the "next array value", not the
-            # index `right`. Right now you're mixing positions with numbers.
-            next_subseq_sum = (nums_subseq_sum + 
-                               (right 
-                                if right < len(sorted_nums) - 1 
-                                else 0))
-            while next_subseq_sum > max_sum:
-                # Hint: ask "is the sum of the first k sorted numbers <= query?"
-                # That yes/no question is monotonic, which is exactly why binary
-                # search works here.
-                if nums_subseq_sum > max_sum:
-                    right = right // 2
-                elif nums_subseq_sum <= max_sum:
-                   mid_right = (right + (len(sorted_nums) - 1)) // 2
-                   right = mid_right
-                nums_subseq = sorted_nums[:right]
-                nums_subseq_sum = sum(nums_subseq)
-                next_subseq_sum = (nums_subseq_sum + 
-                                  (right 
-                                   if right < len(sorted_nums) - 1 
-                                   else 0))
-            # Hint: once your search is over prefix sums, you should not need a
-            # special-case subtraction here. The final binary-search position
-            # directly maps to the subsequence length.
-            max_subseq.append(len(sorted_nums) 
-                              if right == len(sorted_nums) - 1 
-                               else right - 1)
-
+            left, right = 0, len(sorted_nums) - 1
+            mid = (left + right) // 2
+            while left <= right:
+                if nums_subseq_sums[mid] > max_sum:
+                    right = mid - 1
+                elif nums_subseq_sums[mid] <= max_sum:
+                    left = mid + 1
+                mid = (left + right) // 2
+            max_subseq.append(left)
         return max_subseq
 
 
