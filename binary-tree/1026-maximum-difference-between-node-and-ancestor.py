@@ -80,16 +80,53 @@ class Solution:
         Input: root = [1, None, 2, None, 0, 3]
         Output: 3
         """
-        left_diff, right_diff = 0, 0
-        if root.left == None and root.right == None:
-            return 0
-        if root.left:
-            left_diff = max(abs(root.val - root.left.val),
-                            self.maxAncestorDiff(root.left))
-        if root.right:
-            right_diff = max(abs(root.val - root.right.val),
-                             self.maxAncestorDiff(root.right))
-        return max(left_diff, right_diff)
+        # left_diff, right_diff = 0, 0
+        # if root.left == None and root.right == None:
+            # return 0
+        # if root.left:
+            # left_diff = max(abs(root.val - root.left.val),
+                            # self.maxAncestorDiff(root.left))
+        # if root.right:
+            # right_diff = max(abs(root.val - root.right.val),
+                             # self.maxAncestorDiff(root.right))
+        # return max(left_diff, right_diff)
+
+    # def min_max_values_tree(self, node):
+        # max_value, min_value = float("-inf"), float("inf")
+        # max_value_left, min_value_left = float("-inf"), float("inf")
+        # max_value_right, min_value_right = float("-inf"), float("inf")
+        # if 
+        # if node.left:
+            # min_value_left = min_max_values_tree()
+        # max_value = max(node.val,
+                        # self.min_max_values_tree)
+        # min_value = min(node.val, self.min_max_values_tree[1])
+
+        # return min_value, max_value
+
+    def min_values_tree(self, node):
+        """Return the minimum value in the subtree rooted at `node`.
+
+        Hint:
+        - The result should consider the current node and both children.
+        - Decide what a leaf node should return.
+        - If one child is missing, the other side should still work cleanly.
+        """
+        min_value_left, min_value_right = float("inf"), float("inf")
+
+        # Hint: what value from the current node should be compared against
+        # each child's subtree minimum?
+        if node.left:
+            min_value_left = min(min_value, self.min_values_tree(node.left))
+
+        # Hint: same issue here as on the left side.
+        if node.right:
+            min_value_right = min(min_value,
+                                  self.min_values_tree(node.right))
+
+        # Hint: are you including node.val in the final answer, even for leaves?
+        return min(min_value_left, min_value_right)
+
 
 PARAM_ORDER = ['root']
 PARAM_KINDS = {'root': 'tree'}
