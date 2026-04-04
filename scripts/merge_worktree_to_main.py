@@ -92,7 +92,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 def build_commands(branch_name: str, base_branch: str, problem_path: Path) -> list[list[str]]:
     return [
         ["python3", str(problem_path), "--test"],
-        ["git", "pull"],
+        ["git", "pull", "--rebase", "origin", base_branch],
         ["git", "merge", branch_name],
         ["git", "push", "origin", base_branch],
     ]

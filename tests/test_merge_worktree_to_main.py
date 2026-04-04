@@ -111,7 +111,7 @@ class MergeWorkflowTests(unittest.TestCase):
                 ("git", "status", "--short"),
                 ("python3", "binary-search/longest-subsequence-with-limited-sum.py", "--test"),
                 ("git", "worktree", "list", "--porcelain"),
-                ("git", "pull"),
+                ("git", "pull", "--rebase", "origin", "main"),
                 ("git", "merge", "wip/longest-subsequence-with-limited-sum"),
                 ("git", "push", "origin", "main"),
                 ("git", "branch", "-d", "wip/longest-subsequence-with-limited-sum"),
@@ -128,7 +128,7 @@ class MergeWorkflowTests(unittest.TestCase):
             commands[4:8],
             [
                 (("git", "worktree", "list", "--porcelain"), None, True, True),
-                (("git", "pull"), "/repo", False, True),
+                (("git", "pull", "--rebase", "origin", "main"), "/repo", False, True),
                 (
                     ("git", "merge", "wip/longest-subsequence-with-limited-sum"),
                     "/repo",
@@ -166,7 +166,7 @@ class MergeWorkflowTests(unittest.TestCase):
             exit_code = module.main([])
 
         self.assertEqual(exit_code, 0)
-        self.assertIn((("git", "pull"), "/repo", False, True), commands)
+        self.assertIn((("git", "pull", "--rebase", "origin", "main"), "/repo", False, True), commands)
         self.assertIn((("git", "merge", "wip/problem"), "/repo", False, True), commands)
         self.assertIn((("git", "push", "origin", "main"), "/repo", False, True), commands)
 
