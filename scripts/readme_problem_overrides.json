@@ -12,5 +12,13 @@
   },
   "stack/71-simplify-path.py": {
     "demonstrates": "0 ms runtime, 100th-percentile result on a Medium stack problem"
+  },
+  "binary-tree/maximum-difference-between-node-and-child.py": {
+    "frontend_id": 1026,
+    "title": "Maximum Difference Between Node and Child",
+    "title_slug": "maximum-difference-between-node-and-child",
+    "difficulty": "Easy",
+    "category": "binary-tree",
+    "demonstrates": "tree recursion over direct parent-child comparisons"
   }
 }

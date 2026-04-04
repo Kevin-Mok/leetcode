@@ -179,8 +179,10 @@ def load_overrides(override_path):
 def collect_solution_paths(repo_root):
     try:
         tracked_python = run_git_lines(repo_root, "ls-files", "*.py")
+        untracked_python = run_git_lines(repo_root, "ls-files", "--others", "--exclude-standard", "*.py")
+        discovered_python = sorted(set(tracked_python + untracked_python))
     except subprocess.CalledProcessError:
-        tracked_python = [
+        discovered_python = [
             str(path.relative_to(repo_root))
             for path in repo_root.rglob("*.py")
             if ".git" not in path.parts
@@ -188,7 +190,7 @@ def collect_solution_paths(repo_root):
     excluded_prefixes = ("tests/", "scripts/")
     return [
         path
-        for path in tracked_python
+        for path in discovered_python
         if not path.startswith(excluded_prefixes)
         and (repo_root / path).exists()
     ]
@@ -264,8 +266,18 @@ def detect_test_coverage(repo_root, solution_path, test_paths):
 
 def resolve_problem_metadata(solution_path, overrides, client):
     override = overrides.get(solution_path, {})
+    local_title = override.get("title")
+    local_difficulty = override.get("difficulty")
     frontend_id = override.get("frontend_id")
     title_slug = override.get("title_slug")
+
+    if local_title and local_difficulty and frontend_id and title_slug:
+        return ProblemMetadata(
+            frontend_id=frontend_id,
+            title=local_title,
+            title_slug=title_slug,
+            difficulty=local_difficulty,
+        )
 
     if frontend_id:
         question = client.question_by_frontend_id(frontend_id)
@@ -539,6 +551,8 @@ def render_readme(problems, regression_test_count):
             "## Day-To-Day Use",
             "",
             "Add a new solution under the matching topic directory, refresh the local LeetCode catalog when you want the full problem list on disk, then regenerate the README so the solved-problem index, difficulty counts, and notable-problem shortlist stay current.",
+            "",
+            "> Funny note: I got annoyed enough by one tree problem that I created my own spinoff, `maximum-difference-between-node-and-child`, just to prove the immediate-child version I had actually solved.",
             "",
             "The downloaded catalog lives at `data/leetcode-problem-catalog.json`.",
             "",

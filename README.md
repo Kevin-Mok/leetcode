@@ -18,11 +18,11 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 
 | Metric | Count |
 |---|---:|
-| Solved problems | 23 |
+| Solved problems | 24 |
 | Medium problems | 6 |
-| Easy problems | 17 |
+| Easy problems | 18 |
 | Problem categories covered | 12 |
-| Runnable local harnesses | 21 |
+| Runnable local harnesses | 22 |
 | Problems with detected regression coverage | 7 |
 
 ## Notable Problems
@@ -35,7 +35,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | 71. Simplify Path | Medium | Stack | 0 ms runtime, 100th-percentile result on a Medium stack problem |
 | 88. Merge Sorted Array | Easy | Array String | array mutation and pointer coordination |
 | 2389. Longest Subsequence With Limited Sum | Easy | Binary Search | problem framing without framework overhead |
-| 226. Invert Binary Tree | Easy | Binary Tree | tree recursion and traversal correctness |
+| 1026. Maximum Difference Between Node and Child | Easy | Binary Tree | tree recursion over direct parent-child comparisons |
 | 108. Convert Sorted Array to Binary Search Tree | Easy | Divide And Conquer | balanced recursive decomposition |
 | 1832. Check if the Sentence Is Pangram | Easy | Hash Map | frequency counting and constant-time lookup reasoning |
 | 876. Middle of the Linked List | Easy | Linked List | pointer manipulation and in-place rewiring |
@@ -63,6 +63,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | 94. Binary Tree Inorder Traversal | Binary Tree | `binary-tree/94-binary-tree-inorder-traversal.py` | tree recursion and traversal correctness |
 | 111. Minimum Depth of Binary Tree | Binary Tree | `binary-tree/111-minimum-depth-of-binary-tree.py` | tree recursion and traversal correctness |
 | 226. Invert Binary Tree | Binary Tree | `binary-tree/226-invert-binary-tree.py` | tree recursion and traversal correctness |
+| 1026. Maximum Difference Between Node and Child | Binary Tree | `binary-tree/maximum-difference-between-node-and-child.py` | tree recursion over direct parent-child comparisons |
 | 108. Convert Sorted Array to Binary Search Tree | Divide And Conquer | `divide-and-conquer/108-convert-sorted-array-to-binary-search-tree.py` | balanced recursive decomposition |
 | 2160. Minimum Sum of Four Digit Number After Splitting Digits | Greedy | `greedy/2160-minimum-sum-of-four-digit-number-after-splitting-digits.py` | greedy selection under simple constraints |
 | 383. Ransom Note | Hash Map | `hash-map/383-ransom-note.py` | frequency counting and constant-time lookup reasoning |
@@ -81,7 +82,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 |---|---:|
 | Array String | 1 |
 | Binary Search | 2 |
-| Binary Tree | 3 |
+| Binary Tree | 4 |
 | Divide And Conquer | 1 |
 | Dynamic Programming | 3 |
 | Greedy | 2 |
@@ -112,6 +113,8 @@ python3 --version
 ## Day-To-Day Use
 
 Add a new solution under the matching topic directory, refresh the local LeetCode catalog when you want the full problem list on disk, then regenerate the README so the solved-problem index, difficulty counts, and notable-problem shortlist stay current.
+
+> Funny note: I got annoyed enough by one tree problem that I created my own spinoff, `maximum-difference-between-node-and-child`, just to prove the immediate-child version I had actually solved.
 
 The downloaded catalog lives at `data/leetcode-problem-catalog.json`.
 

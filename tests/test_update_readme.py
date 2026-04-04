@@ -127,6 +127,28 @@ class ResolveProblemMetadataTests(unittest.TestCase):
         self.assertEqual(problem.frontend_id, "1962")
         self.assertEqual(problem.difficulty, "Medium")
 
+    def test_resolve_problem_metadata_supports_fully_local_override_metadata(self):
+        module = load_update_readme_module(self)
+        client = FakeLeetCodeClient()
+
+        problem = module.resolve_problem_metadata(
+            "binary-tree/maximum-difference-between-node-and-child.py",
+            {
+                "binary-tree/maximum-difference-between-node-and-child.py": {
+                    "frontend_id": "1026",
+                    "title": "Maximum Difference Between Node and Child",
+                    "title_slug": "maximum-difference-between-node-and-child",
+                    "difficulty": "Easy",
+                }
+            },
+            client,
+        )
+
+        self.assertEqual(problem.frontend_id, "1026")
+        self.assertEqual(problem.title, "Maximum Difference Between Node and Child")
+        self.assertEqual(problem.title_slug, "maximum-difference-between-node-and-child")
+        self.assertEqual(problem.difficulty, "Easy")
+
     def test_resolve_problem_metadata_fails_closed_when_search_is_ambiguous(self):
         module = load_update_readme_module(self)
         client = FakeLeetCodeClient(
@@ -244,6 +266,39 @@ class NotableProblemSelectionTests(unittest.TestCase):
 
 
 class CollectProblemEntriesTests(unittest.TestCase):
+    def test_collect_solution_paths_includes_untracked_problem_files(self):
+        module = load_update_readme_module(self)
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            repo_root = Path(tmp_dir)
+            (repo_root / ".git").mkdir()
+            (repo_root / "binary-tree").mkdir()
+            tracked = repo_root / "binary-tree" / "226-invert-binary-tree.py"
+            untracked = repo_root / "binary-tree" / "maximum-difference-between-node-and-child.py"
+            ignored_test = repo_root / "tests"
+            ignored_test.mkdir()
+            (ignored_test / "test_example.py").write_text("pass\n")
+            tracked.write_text("print('tracked')\n")
+            untracked.write_text("print('untracked')\n")
+
+            def fake_run_git_lines(_repo_root, *args):
+                if args == ("ls-files", "*.py"):
+                    return ["binary-tree/226-invert-binary-tree.py", "tests/test_example.py"]
+                if args == ("ls-files", "--others", "--exclude-standard", "*.py"):
+                    return ["binary-tree/maximum-difference-between-node-and-child.py"]
+                self.fail(f"Unexpected git args: {args}")
+
+            with mock.patch.object(module, "run_git_lines", side_effect=fake_run_git_lines):
+                paths = module.collect_solution_paths(repo_root)
+
+        self.assertEqual(
+            paths,
+            [
+                "binary-tree/226-invert-binary-tree.py",
+                "binary-tree/maximum-difference-between-node-and-child.py",
+            ],
+        )
+
     def test_collect_problem_entries_excludes_harness_backed_solution_when_local_test_fails(self):
         module = load_update_readme_module(self)
         client = FakeLeetCodeClient(
@@ -388,6 +443,7 @@ class RenderReadmeTests(unittest.TestCase):
         self.assertIn("## Recruiter Proof Surface", rendered)
         self.assertIn("Generated metrics and notable-problem tables turn the repo into a durable evidence surface", rendered)
         self.assertIn("Generated README workflow backed by tracked files and live difficulty metadata", rendered)
+        self.assertIn("I got annoyed enough by one tree problem that I created my own spinoff", rendered)
         self.assertNotIn("## Why This Repo Is Worth Reviewing", rendered)
         self.assertNotIn("## Recruiter Notes", rendered)
 
