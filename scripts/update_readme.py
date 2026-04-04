@@ -228,6 +228,26 @@ def detect_harness(repo_root, solution_path):
     return "__main__" in text
 
 
+def supports_local_test_harness(solution_text):
+    return "__main__" in solution_text and "--test" in solution_text.replace('"', "").replace("'", "")
+
+
+def local_harness_test_passes(repo_root, solution_path, solution_text):
+    if not supports_local_test_harness(solution_text):
+        return True
+    try:
+        result = subprocess.run(
+            [sys.executable, solution_path, "--test"],
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+    return result.returncode == 0
+
+
 def detect_test_coverage(repo_root, solution_path, test_paths):
     path_bits = set(Path(solution_path).parts)
     stem_bits = set(Path(solution_path).stem.split("-"))
@@ -302,6 +322,10 @@ def collect_problem_entries(repo_root, overrides_path=None, client=None):
 
     problems = []
     for solution_path in solution_paths:
+        solution_file = repo_root / solution_path
+        solution_text = solution_file.read_text() if solution_file.exists() else None
+        if solution_text is not None and not local_harness_test_passes(repo_root, solution_path, solution_text):
+            continue
         metadata = resolve_problem_metadata(solution_path, overrides, client)
         category = overrides.get(solution_path, {}).get("category", infer_category(solution_path))
         demonstrates = overrides.get(solution_path, {}).get("demonstrates", default_demonstrates(category))
@@ -313,7 +337,7 @@ def collect_problem_entries(repo_root, overrides_path=None, client=None):
                 title=metadata.title,
                 title_slug=metadata.title_slug,
                 difficulty=metadata.difficulty,
-                has_harness=detect_harness(repo_root, solution_path),
+                has_harness="__main__" in solution_text if solution_text is not None else detect_harness(repo_root, solution_path),
                 has_test=detect_test_coverage(repo_root, solution_path, test_paths),
                 demonstrates=demonstrates,
             )

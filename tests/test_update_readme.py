@@ -244,6 +244,43 @@ class NotableProblemSelectionTests(unittest.TestCase):
 
 
 class CollectProblemEntriesTests(unittest.TestCase):
+    def test_collect_problem_entries_excludes_harness_backed_solution_when_local_test_fails(self):
+        module = load_update_readme_module(self)
+        client = FakeLeetCodeClient(
+            by_id={
+                "1026": {
+                    "frontend_id": "1026",
+                    "title": "Maximum Difference Between Node and Ancestor",
+                    "title_slug": "maximum-difference-between-node-and-ancestor",
+                    "difficulty": "Medium",
+                }
+            }
+        )
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            repo_root = Path(tmp_dir)
+            problem_dir = repo_root / "binary-tree"
+            problem_dir.mkdir()
+            solution_path = problem_dir / "1026-maximum-difference-between-node-and-ancestor.py"
+            solution_path.write_text(
+                "import argparse\n"
+                "import sys\n"
+                "if __name__ == '__main__':\n"
+                "    parser = argparse.ArgumentParser()\n"
+                "    parser.add_argument('--test', action='store_true')\n"
+                "    args = parser.parse_args()\n"
+                "    if args.test:\n"
+                "        raise SystemExit(1)\n"
+                "    print('example runner')\n"
+            )
+
+            with mock.patch.object(
+                module, "collect_solution_paths", return_value=["binary-tree/1026-maximum-difference-between-node-and-ancestor.py"]
+            ), mock.patch.object(module, "collect_test_paths", return_value=[]):
+                problems = module.collect_problem_entries(repo_root, repo_root / "overrides.json", client)
+
+        self.assertEqual(problems, [])
+
     def test_repo_override_file_preserves_custom_demonstrates(self):
         repo_root = Path(__file__).resolve().parents[1]
         overrides = load_update_readme_module(self).load_overrides(
@@ -255,7 +292,7 @@ class CollectProblemEntriesTests(unittest.TestCase):
             "0 ms runtime, 100th-percentile result on a Medium stack problem",
         )
         self.assertEqual(
-            overrides.get("queue/moving-average-from-data-stream.py", {}).get("demonstrates"),
+            overrides.get("queue/346-moving-average-from-data-stream.py", {}).get("demonstrates"),
             "3 ms runtime, 82.25th-percentile speed, 22.10 MB memory, 92.75th-percentile memory efficiency",
         )
 
