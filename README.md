@@ -23,7 +23,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | Easy problems | 18 |
 | Problem categories covered | 12 |
 | Runnable local harnesses | 22 |
-| Problems with detected regression coverage | 7 |
+| Problems with detected regression coverage | 8 |
 
 ## Notable Problems
 

@@ -117,15 +117,15 @@ class Solution:
         # Hint: what value from the current node should be compared against
         # each child's subtree minimum?
         if node.left:
-            min_value_left = min(min_value, self.min_values_tree(node.left))
+            min_value_left = min(min_value_left, self.min_values_tree(node.left))
 
         # Hint: same issue here as on the left side.
         if node.right:
-            min_value_right = min(min_value,
+            min_value_right = min(min_value_right,
                                   self.min_values_tree(node.right))
 
         # Hint: are you including node.val in the final answer, even for leaves?
-        return min(min_value_left, min_value_right)
+        return min(node.val, min_value_left, min_value_right)
 
 
 PARAM_ORDER = ['root']
