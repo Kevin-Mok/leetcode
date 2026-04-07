@@ -49,5 +49,29 @@ class MinValuesTreeTests(unittest.TestCase):
         self.assertEqual(module.Solution().min_values_tree(root), 2)
 
 
+class MaxValuesTreeTests(unittest.TestCase):
+    def test_max_values_tree_returns_leaf_value(self):
+        module = load_solution_module(self)
+        leaf = module.TreeNode(7)
+
+        self.assertEqual(module.Solution().max_values_tree(leaf), 7)
+
+    def test_max_values_tree_uses_largest_descendant(self):
+        module = load_solution_module(self)
+        root = module.TreeNode(
+            8,
+            module.TreeNode(3, module.TreeNode(1), module.TreeNode(6)),
+            module.TreeNode(10, None, module.TreeNode(14)),
+        )
+
+        self.assertEqual(module.Solution().max_values_tree(root), 14)
+
+    def test_max_values_tree_handles_single_left_branch(self):
+        module = load_solution_module(self)
+        root = module.TreeNode(5, module.TreeNode(6, module.TreeNode(9)), None)
+
+        self.assertEqual(module.Solution().max_values_tree(root), 9)
+
+
 if __name__ == "__main__":
     unittest.main()

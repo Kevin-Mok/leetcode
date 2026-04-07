@@ -127,6 +127,37 @@ class Solution:
         # Hint: are you including node.val in the final answer, even for leaves?
         return min(node.val, min_value_left, min_value_right)
 
+    def max_values_tree(self, node):
+        """Return the maximum value in the subtree rooted at `node`.
+
+        Hint:
+        - The result should consider the current node and both children.
+        - Decide what a leaf node should return.
+        - If one child is missing, the other side should still work cleanly.
+        """
+        # Hint: for a max helper, the neutral starting value should move in the
+        # opposite direction from the min helper.
+        max_value_left = float("-inf")
+        max_value_right = float("-inf")
+
+        # Hint: what value from the current node should be compared against
+        # each child's subtree minimum?
+        if node.left:
+            # Hint: check whether both the variable name and recursive call match
+            # the "max values" goal of this helper.
+            max_value_left = max(max_value_left,
+                                 self.max_values_tree(node.left))
+
+        # Hint: same issue here as on the left side.
+        if node.right:
+            # Hint: if this helper is finding a maximum, check whether this
+            # combine step is using the right operation.
+            max_value_right = max(max_value_right,
+                                  self.max_values_tree(node.right))
+
+        # Hint: are you including node.val in the final answer, even for leaves?
+        return max(node.val, max_value_left, max_value_right)
+
 
 PARAM_ORDER = ['root']
 PARAM_KINDS = {'root': 'tree'}
