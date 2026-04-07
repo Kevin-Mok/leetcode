@@ -18,11 +18,11 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 
 | Metric | Count |
 |---|---:|
-| Solved problems | 23 |
-| Medium problems | 6 |
+| Solved problems | 24 |
+| Medium problems | 7 |
 | Easy problems | 17 |
 | Problem categories covered | 12 |
-| Runnable local harnesses | 21 |
+| Runnable local harnesses | 22 |
 | Problems with detected regression coverage | 7 |
 
 ## Notable Problems
@@ -51,6 +51,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | 322. Coin Change | Dynamic Programming | `dynamic-programming/322-coin-change.py` | state modeling and subproblem decomposition |
 | 894. All Possible Full Binary Trees | Dynamic Programming | `dynamic-programming/894-all-possible-full-binary-trees.py` | state modeling and subproblem decomposition |
 | 1689. Partitioning Into Minimum Number Of Deci-Binary Numbers | Greedy | `greedy/1689-partitioning-into-minimum-number-of-deci-binary-numbers.py` | greedy selection under simple constraints |
+| 1167. Minimum Cost to Connect Sticks | Heap | `heap/1167-minimum-cost-to-connect-sticks.py` | priority-queue updates under repeated operations |
 | 1962. Remove Stones to Minimize the Total | Heap | `heap/1962-remove-stones-to-minimize-the-total.py` | priority-queue updates under repeated operations |
 | 71. Simplify Path | Stack | `stack/71-simplify-path.py` | 0 ms runtime, 100th-percentile result on a Medium stack problem |
 
@@ -86,7 +87,7 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | Dynamic Programming | 3 |
 | Greedy | 2 |
 | Hash Map | 2 |
-| Heap | 1 |
+| Heap | 2 |
 | Linked List | 3 |
 | Queue | 1 |
 | Stack | 2 |
