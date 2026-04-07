@@ -73,5 +73,13 @@ class MaxValuesTreeTests(unittest.TestCase):
         self.assertEqual(module.Solution().max_values_tree(root), 9)
 
 
+class MaxAncestorDiffTests(unittest.TestCase):
+    def test_max_ancestor_diff_matches_example_one(self):
+        module = load_solution_module(self)
+        root = module.build_tree([8, 3, 10, 1, 6, None, 14, None, None, 4, 7, 13])
+
+        self.assertEqual(module.Solution().maxAncestorDiff(root), 7)
+
+
 if __name__ == "__main__":
     unittest.main()

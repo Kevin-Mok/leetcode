@@ -19,3 +19,4 @@
 2026-04-03 - In this repo, when the user asks only for a LeetCode problem's difficulty, answer with just the difficulty and avoid any solution direction or hinting.
 2026-04-04 - When pushing from this repo, push to the upstream branch with the same name as the local branch and set upstream during the push if it is missing.
 2026-04-05 - In this repo, when the user asks for hints on their LeetCode helper, do not add new tests or attempt a fix unless they explicitly ask for code changes.
+2026-04-07 - In this repo, when the user asks a conceptual LeetCode question like whether helpers are needed, do not reveal the replacement algorithm or traversal strategy unless they explicitly ask for the solution.

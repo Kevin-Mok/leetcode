@@ -80,29 +80,7 @@ class Solution:
         Input: root = [1, None, 2, None, 0, 3]
         Output: 3
         """
-        # left_diff, right_diff = 0, 0
-        # if root.left == None and root.right == None:
-            # return 0
-        # if root.left:
-            # left_diff = max(abs(root.val - root.left.val),
-                            # self.maxAncestorDiff(root.left))
-        # if root.right:
-            # right_diff = max(abs(root.val - root.right.val),
-                             # self.maxAncestorDiff(root.right))
-        # return max(left_diff, right_diff)
-
-    # def min_max_values_tree(self, node):
-        # max_value, min_value = float("-inf"), float("inf")
-        # max_value_left, min_value_left = float("-inf"), float("inf")
-        # max_value_right, min_value_right = float("-inf"), float("inf")
-        # if 
-        # if node.left:
-            # min_value_left = min_max_values_tree()
-        # max_value = max(node.val,
-                        # self.min_max_values_tree)
-        # min_value = min(node.val, self.min_max_values_tree[1])
-
-        # return min_value, max_value
+        return self.max_values_tree(root) - self.min_values_tree(root) 
 
     def min_values_tree(self, node):
         """Return the minimum value in the subtree rooted at `node`.
