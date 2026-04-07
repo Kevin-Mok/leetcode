@@ -409,6 +409,15 @@ def render_metric_table(stats):
     return "\n".join(lines)
 
 
+def render_problem_link(problem):
+    return f"[{problem.frontend_id}. {problem.title}]({problem.repo_path})"
+
+
+def render_category_link(category):
+    category_path = "." if category == "standalone" else category
+    return f"[{display_category(category)}]({category_path})"
+
+
 def render_notable_table(problems):
     lines = [
         "| Problem | Difficulty | Category | What This Demonstrates |",
@@ -416,7 +425,7 @@ def render_notable_table(problems):
     ]
     for problem in problems:
         lines.append(
-            f"| {problem.frontend_id}. {problem.title} | {problem.difficulty} | {display_category(problem.category)} | {problem.demonstrates} |"
+            f"| {render_problem_link(problem)} | {problem.difficulty} | {render_category_link(problem.category)} | {problem.demonstrates} |"
         )
     return "\n".join(lines)
 
@@ -424,7 +433,7 @@ def render_notable_table(problems):
 def render_category_table(stats):
     lines = ["| Category | Problems |", "|---|---:|"]
     for category, count in sorted(stats["category_counts"].items()):
-        lines.append(f"| {display_category(category)} | {count} |")
+        lines.append(f"| {render_category_link(category)} | {count} |")
     return "\n".join(lines)
 
 
@@ -440,12 +449,12 @@ def render_difficulty_tables(problems):
             continue
         sections.append(f"## {difficulty}")
         lines = [
-            "| Problem | Category | Repo Path | What This Demonstrates |",
-            "|---|---|---|---|",
+            "| Problem | Category | What This Demonstrates |",
+            "|---|---|---|",
         ]
         for problem in sorted(entries, key=lambda item: (display_category(item.category), int(item.frontend_id), item.title)):
             lines.append(
-                f"| {problem.frontend_id}. {problem.title} | {display_category(problem.category)} | `{problem.repo_path}` | {problem.demonstrates} |"
+                f"| {render_problem_link(problem)} | {render_category_link(problem.category)} | {problem.demonstrates} |"
             )
         sections.append("\n".join(lines))
         sections.append("")

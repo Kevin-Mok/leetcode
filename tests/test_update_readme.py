@@ -255,7 +255,7 @@ class CollectProblemEntriesTests(unittest.TestCase):
             "0 ms runtime, 100th-percentile result on a Medium stack problem",
         )
         self.assertEqual(
-            overrides.get("queue/moving-average-from-data-stream.py", {}).get("demonstrates"),
+            overrides.get("queue/346-moving-average-from-data-stream.py", {}).get("demonstrates"),
             "3 ms runtime, 82.25th-percentile speed, 22.10 MB memory, 92.75th-percentile memory efficiency",
         )
 
@@ -336,8 +336,12 @@ class RenderReadmeTests(unittest.TestCase):
         self.assertIn("| Solved problems | 2 |", rendered)
         self.assertIn("| Runnable local harnesses | 2 |", rendered)
         self.assertIn("| Problems with detected regression coverage | 2 |", rendered)
-        self.assertIn("Remove Stones to Minimize the Total", rendered)
-        self.assertIn("Binary Tree Inorder Traversal", rendered)
+        self.assertIn("[1962. Remove Stones to Minimize the Total](heap/1962-remove-stones-to-minimize-the-total.py)", rendered)
+        self.assertIn("[94. Binary Tree Inorder Traversal](binary-tree/94-binary-tree-inorder-traversal.py)", rendered)
+        self.assertIn("[Heap](heap)", rendered)
+        self.assertIn("[Binary Tree](binary-tree)", rendered)
+        self.assertNotIn("| Problem | Category | Repo Path | What This Demonstrates |", rendered)
+        self.assertNotIn("`heap/1962-remove-stones-to-minimize-the-total.py`", rendered)
         self.assertIn("What This Demonstrates", rendered)
         self.assertIn("python3 scripts/update_readme.py", rendered)
         self.assertIn("python3 scripts/download_problem_catalog.py", rendered)
