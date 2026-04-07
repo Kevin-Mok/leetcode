@@ -29,52 +29,52 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 
 | Problem | Difficulty | Category | What This Demonstrates |
 |---|---|---|---|
-| [894. All Possible Full Binary Trees](dynamic-programming/894-all-possible-full-binary-trees.py) | Medium | [Dynamic Programming](dynamic-programming) | state modeling and subproblem decomposition |
-| [1689. Partitioning Into Minimum Number Of Deci-Binary Numbers](greedy/1689-partitioning-into-minimum-number-of-deci-binary-numbers.py) | Medium | [Greedy](greedy) | greedy selection under simple constraints |
-| [1962. Remove Stones to Minimize the Total](heap/1962-remove-stones-to-minimize-the-total.py) | Medium | [Heap](heap) | priority-queue updates under repeated operations |
+| [894. All Possible Full Binary Trees](dynamic-programming/894-all-possible-full-binary-trees.py) | Medium | [Dynamic Programming](dynamic-programming) | reusing subproblem results to enumerate every full binary-tree shape of a given size |
+| [1689. Partitioning Into Minimum Number Of Deci-Binary Numbers](greedy/1689-partitioning-into-minimum-number-of-deci-binary-numbers.py) | Medium | [Greedy](greedy) | reducing the answer to the largest digit instead of simulating each deci-binary number |
+| [1962. Remove Stones to Minimize the Total](heap/1962-remove-stones-to-minimize-the-total.py) | Medium | [Heap](heap) | repeatedly reducing the largest pile so the remaining total drops as fast as possible |
 | [71. Simplify Path](stack/71-simplify-path.py) | Medium | [Stack](stack) | 0 ms runtime, 100th-percentile result on a Medium stack problem |
-| [88. Merge Sorted Array](array-string/88-merge-sorted-array.py) | Easy | [Array String](array-string) | array mutation and pointer coordination |
-| [2389. Longest Subsequence With Limited Sum](binary-search/longest-subsequence-with-limited-sum.py) | Easy | [Binary Search](binary-search) | problem framing without framework overhead |
-| [226. Invert Binary Tree](binary-tree/226-invert-binary-tree.py) | Easy | [Binary Tree](binary-tree) | tree recursion and traversal correctness |
-| [108. Convert Sorted Array to Binary Search Tree](divide-and-conquer/108-convert-sorted-array-to-binary-search-tree.py) | Easy | [Divide And Conquer](divide-and-conquer) | balanced recursive decomposition |
-| [1832. Check if the Sentence Is Pangram](hash-map/1832-check-if-the-sentence-is-pangram.py) | Easy | [Hash Map](hash-map) | frequency counting and constant-time lookup reasoning |
-| [876. Middle of the Linked List](linked-list/876-middle-of-the-linked-list.py) | Easy | [Linked List](linked-list) | pointer manipulation and in-place rewiring |
+| [88. Merge Sorted Array](array-string/88-merge-sorted-array.py) | Easy | [Array String](array-string) | merging two sorted inputs in place from the back of the destination array |
+| [2389. Longest Subsequence With Limited Sum](binary-search/longest-subsequence-with-limited-sum.py) | Easy | [Binary Search](binary-search) | prefix-sum preprocessing plus binary-search queries against a running sum budget |
+| [226. Invert Binary Tree](binary-tree/226-invert-binary-tree.py) | Easy | [Binary Tree](binary-tree) | inverting a binary tree and returning the flipped root structure |
+| [108. Convert Sorted Array to Binary Search Tree](divide-and-conquer/108-convert-sorted-array-to-binary-search-tree.py) | Easy | [Divide And Conquer](divide-and-conquer) | choosing midpoint roots recursively to keep the binary search tree height-balanced |
+| [1832. Check if the Sentence Is Pangram](hash-map/1832-check-if-the-sentence-is-pangram.py) | Easy | [Hash Map](hash-map) | checking whether every lowercase letter appears at least once in the sentence |
+| [876. Middle of the Linked List](linked-list/876-middle-of-the-linked-list.py) | Easy | [Linked List](linked-list) | single-pass linked-list traversal that returns the second middle when the length is even |
 | [346. Moving Average from Data Stream](queue/346-moving-average-from-data-stream.py) | Easy | [Queue](queue) | 3 ms runtime, 82.25th-percentile speed, 22.10 MB memory, 92.75th-percentile memory efficiency |
-| [977. Squares of a Sorted Array](strings/977-squares-of-a-sorted-array.py) | Easy | [Strings](strings) | two-pointer and in-place sequence mutation |
+| [977. Squares of a Sorted Array](strings/977-squares-of-a-sorted-array.py) | Easy | [Strings](strings) | filling sorted squared values by comparing absolute values from both ends |
 
 ## Solved Problems By Difficulty
 
 ## Medium
 | Problem | Category | What This Demonstrates |
 |---|---|---|
-| [300. Longest Increasing Subsequence](dynamic-programming/300-longest-increasing-subsequence.py) | [Dynamic Programming](dynamic-programming) | state modeling and subproblem decomposition |
-| [322. Coin Change](dynamic-programming/322-coin-change.py) | [Dynamic Programming](dynamic-programming) | state modeling and subproblem decomposition |
-| [894. All Possible Full Binary Trees](dynamic-programming/894-all-possible-full-binary-trees.py) | [Dynamic Programming](dynamic-programming) | state modeling and subproblem decomposition |
-| [1689. Partitioning Into Minimum Number Of Deci-Binary Numbers](greedy/1689-partitioning-into-minimum-number-of-deci-binary-numbers.py) | [Greedy](greedy) | greedy selection under simple constraints |
-| [1167. Minimum Cost to Connect Sticks](heap/1167-minimum-cost-to-connect-sticks.py) | [Heap](heap) | priority-queue updates under repeated operations |
-| [1962. Remove Stones to Minimize the Total](heap/1962-remove-stones-to-minimize-the-total.py) | [Heap](heap) | priority-queue updates under repeated operations |
+| [300. Longest Increasing Subsequence](dynamic-programming/300-longest-increasing-subsequence.py) | [Dynamic Programming](dynamic-programming) | tracking the best increasing subsequence length that can end at each position |
+| [322. Coin Change](dynamic-programming/322-coin-change.py) | [Dynamic Programming](dynamic-programming) | building the minimum-coin answer for each amount up to the target |
+| [894. All Possible Full Binary Trees](dynamic-programming/894-all-possible-full-binary-trees.py) | [Dynamic Programming](dynamic-programming) | reusing subproblem results to enumerate every full binary-tree shape of a given size |
+| [1689. Partitioning Into Minimum Number Of Deci-Binary Numbers](greedy/1689-partitioning-into-minimum-number-of-deci-binary-numbers.py) | [Greedy](greedy) | reducing the answer to the largest digit instead of simulating each deci-binary number |
+| [1167. Minimum Cost to Connect Sticks](heap/1167-minimum-cost-to-connect-sticks.py) | [Heap](heap) | repeated cheapest-pair stick merges that minimize the total connection cost |
+| [1962. Remove Stones to Minimize the Total](heap/1962-remove-stones-to-minimize-the-total.py) | [Heap](heap) | repeatedly reducing the largest pile so the remaining total drops as fast as possible |
 | [71. Simplify Path](stack/71-simplify-path.py) | [Stack](stack) | 0 ms runtime, 100th-percentile result on a Medium stack problem |
 
 ## Easy
 | Problem | Category | What This Demonstrates |
 |---|---|---|
-| [88. Merge Sorted Array](array-string/88-merge-sorted-array.py) | [Array String](array-string) | array mutation and pointer coordination |
-| [35. Search Insert Position](binary-search/search-insert-position.py) | [Binary Search](binary-search) | problem framing without framework overhead |
-| [2389. Longest Subsequence With Limited Sum](binary-search/longest-subsequence-with-limited-sum.py) | [Binary Search](binary-search) | problem framing without framework overhead |
-| [94. Binary Tree Inorder Traversal](binary-tree/94-binary-tree-inorder-traversal.py) | [Binary Tree](binary-tree) | tree recursion and traversal correctness |
-| [111. Minimum Depth of Binary Tree](binary-tree/111-minimum-depth-of-binary-tree.py) | [Binary Tree](binary-tree) | tree recursion and traversal correctness |
-| [226. Invert Binary Tree](binary-tree/226-invert-binary-tree.py) | [Binary Tree](binary-tree) | tree recursion and traversal correctness |
-| [108. Convert Sorted Array to Binary Search Tree](divide-and-conquer/108-convert-sorted-array-to-binary-search-tree.py) | [Divide And Conquer](divide-and-conquer) | balanced recursive decomposition |
-| [2160. Minimum Sum of Four Digit Number After Splitting Digits](greedy/2160-minimum-sum-of-four-digit-number-after-splitting-digits.py) | [Greedy](greedy) | greedy selection under simple constraints |
-| [383. Ransom Note](hash-map/383-ransom-note.py) | [Hash Map](hash-map) | frequency counting and constant-time lookup reasoning |
-| [1832. Check if the Sentence Is Pangram](hash-map/1832-check-if-the-sentence-is-pangram.py) | [Hash Map](hash-map) | frequency counting and constant-time lookup reasoning |
-| [21. Merge Two Sorted Lists](linked-list/21-merge-two-sorted-lists.py) | [Linked List](linked-list) | pointer manipulation and in-place rewiring |
-| [83. Remove Duplicates from Sorted List](linked-list/83-remove-duplicates-from-sorted-list.py) | [Linked List](linked-list) | pointer manipulation and in-place rewiring |
-| [876. Middle of the Linked List](linked-list/876-middle-of-the-linked-list.py) | [Linked List](linked-list) | pointer manipulation and in-place rewiring |
+| [88. Merge Sorted Array](array-string/88-merge-sorted-array.py) | [Array String](array-string) | merging two sorted inputs in place from the back of the destination array |
+| [35. Search Insert Position](binary-search/search-insert-position.py) | [Binary Search](binary-search) | finding a target index or the sorted insertion point when the value is absent |
+| [2389. Longest Subsequence With Limited Sum](binary-search/longest-subsequence-with-limited-sum.py) | [Binary Search](binary-search) | prefix-sum preprocessing plus binary-search queries against a running sum budget |
+| [94. Binary Tree Inorder Traversal](binary-tree/94-binary-tree-inorder-traversal.py) | [Binary Tree](binary-tree) | walking a binary tree in left-root-right order and returning the visited values |
+| [111. Minimum Depth of Binary Tree](binary-tree/111-minimum-depth-of-binary-tree.py) | [Binary Tree](binary-tree) | stopping at the first leaf depth instead of miscounting missing-child branches |
+| [226. Invert Binary Tree](binary-tree/226-invert-binary-tree.py) | [Binary Tree](binary-tree) | inverting a binary tree and returning the flipped root structure |
+| [108. Convert Sorted Array to Binary Search Tree](divide-and-conquer/108-convert-sorted-array-to-binary-search-tree.py) | [Divide And Conquer](divide-and-conquer) | choosing midpoint roots recursively to keep the binary search tree height-balanced |
+| [2160. Minimum Sum of Four Digit Number After Splitting Digits](greedy/2160-minimum-sum-of-four-digit-number-after-splitting-digits.py) | [Greedy](greedy) | sorting digits and distributing small digits across both numbers to minimize the total |
+| [383. Ransom Note](hash-map/383-ransom-note.py) | [Hash Map](hash-map) | counting character supply versus demand to decide whether construction is possible |
+| [1832. Check if the Sentence Is Pangram](hash-map/1832-check-if-the-sentence-is-pangram.py) | [Hash Map](hash-map) | checking whether every lowercase letter appears at least once in the sentence |
+| [21. Merge Two Sorted Lists](linked-list/21-merge-two-sorted-lists.py) | [Linked List](linked-list) | pointer-by-pointer merging that preserves sorted order without rebuilding the list |
+| [83. Remove Duplicates from Sorted List](linked-list/83-remove-duplicates-from-sorted-list.py) | [Linked List](linked-list) | removing repeated linked-list values in place while keeping one copy of each |
+| [876. Middle of the Linked List](linked-list/876-middle-of-the-linked-list.py) | [Linked List](linked-list) | single-pass linked-list traversal that returns the second middle when the length is even |
 | [346. Moving Average from Data Stream](queue/346-moving-average-from-data-stream.py) | [Queue](queue) | 3 ms runtime, 82.25th-percentile speed, 22.10 MB memory, 92.75th-percentile memory efficiency |
-| [20. Valid Parentheses](stack/20-valid-parentheses.py) | [Stack](stack) | stack-based validation and ordering rules |
-| [344. Reverse String](strings/344-reverse-string.py) | [Strings](strings) | two-pointer and in-place sequence mutation |
-| [977. Squares of a Sorted Array](strings/977-squares-of-a-sorted-array.py) | [Strings](strings) | two-pointer and in-place sequence mutation |
+| [20. Valid Parentheses](stack/20-valid-parentheses.py) | [Stack](stack) | verifying nested bracket order with stack-based matching rules |
+| [344. Reverse String](strings/344-reverse-string.py) | [Strings](strings) | reversing the character array in place with two-pointer swaps |
+| [977. Squares of a Sorted Array](strings/977-squares-of-a-sorted-array.py) | [Strings](strings) | filling sorted squared values by comparing absolute values from both ends |
 
 ## Category Coverage
 

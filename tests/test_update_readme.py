@@ -244,6 +244,42 @@ class NotableProblemSelectionTests(unittest.TestCase):
 
 
 class CollectProblemEntriesTests(unittest.TestCase):
+    def test_collect_problem_entries_infers_demonstrates_when_override_is_missing(self):
+        module = load_update_readme_module(self)
+        client = FakeLeetCodeClient(
+            by_id={
+                "226": {
+                    "frontend_id": "226",
+                    "title": "Invert Binary Tree",
+                    "title_slug": "invert-binary-tree",
+                    "difficulty": "Easy",
+                }
+            }
+        )
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            repo_root = Path(tmp_dir)
+            override_path = repo_root / "overrides.json"
+            override_path.write_text("{}\n")
+            problem_path = repo_root / "binary-tree" / "226-invert-binary-tree.txt"
+            problem_path.parent.mkdir(parents=True, exist_ok=True)
+            problem_path.write_text(
+                "Solution\n"
+                "Given the root of a binary tree, invert the tree, and return its root.\n"
+            )
+
+            with mock.patch.object(module, "collect_solution_paths", return_value=["binary-tree/226-invert-binary-tree.py"]), mock.patch.object(
+                module, "collect_test_paths", return_value=[]
+            ), mock.patch.object(module, "detect_harness", return_value=True), mock.patch.object(
+                module, "detect_test_coverage", return_value=False
+            ):
+                problems = module.collect_problem_entries(repo_root, override_path, client)
+
+        self.assertEqual(
+            problems[0].demonstrates,
+            "inverting a binary tree and returning the flipped root structure",
+        )
+
     def test_repo_override_file_preserves_custom_demonstrates(self):
         repo_root = Path(__file__).resolve().parents[1]
         overrides = load_update_readme_module(self).load_overrides(
@@ -294,6 +330,62 @@ class CollectProblemEntriesTests(unittest.TestCase):
         self.assertEqual(
             problems[0].demonstrates,
             "0 ms runtime, 100th-percentile result on a Medium stack problem",
+        )
+
+    def test_collect_problem_entries_uses_distinct_inferred_demonstrates_in_same_category(self):
+        module = load_update_readme_module(self)
+        client = FakeLeetCodeClient(
+            by_id={
+                "94": {
+                    "frontend_id": "94",
+                    "title": "Binary Tree Inorder Traversal",
+                    "title_slug": "binary-tree-inorder-traversal",
+                    "difficulty": "Easy",
+                },
+                "226": {
+                    "frontend_id": "226",
+                    "title": "Invert Binary Tree",
+                    "title_slug": "invert-binary-tree",
+                    "difficulty": "Easy",
+                },
+            }
+        )
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            repo_root = Path(tmp_dir)
+            override_path = repo_root / "overrides.json"
+            override_path.write_text("{}\n")
+            prompt_dir = repo_root / "binary-tree"
+            prompt_dir.mkdir(parents=True, exist_ok=True)
+            (prompt_dir / "94-binary-tree-inorder-traversal.txt").write_text(
+                "Solution\n"
+                "Given the root of a binary tree, return the inorder traversal of its nodes' values.\n"
+            )
+            (prompt_dir / "226-invert-binary-tree.txt").write_text(
+                "Solution\n"
+                "Given the root of a binary tree, invert the tree, and return its root.\n"
+            )
+
+            with mock.patch.object(
+                module,
+                "collect_solution_paths",
+                return_value=[
+                    "binary-tree/94-binary-tree-inorder-traversal.py",
+                    "binary-tree/226-invert-binary-tree.py",
+                ],
+            ), mock.patch.object(module, "collect_test_paths", return_value=[]), mock.patch.object(
+                module, "detect_harness", return_value=True
+            ), mock.patch.object(module, "detect_test_coverage", return_value=False):
+                problems = module.collect_problem_entries(repo_root, override_path, client)
+
+        demonstrates_by_path = {problem.repo_path: problem.demonstrates for problem in problems}
+        self.assertEqual(
+            demonstrates_by_path["binary-tree/94-binary-tree-inorder-traversal.py"],
+            "walking a binary tree in left-root-right order and returning the visited values",
+        )
+        self.assertEqual(
+            demonstrates_by_path["binary-tree/226-invert-binary-tree.py"],
+            "inverting a binary tree and returning the flipped root structure",
         )
 
 
