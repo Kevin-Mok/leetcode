@@ -18,10 +18,31 @@ exists.
 
 def shortest_study_sprint(blocks: list[int], target: int) -> int:
     """Return the shortest valid window length for the provided inputs."""
-    raise NotImplementedError(
-        "Implement shortest_study_sprint before running these tests."
-    )
+    if target == 0:
+        return 0
 
+    left, right = 0, 0
+    cur_window_sum = sum(blocks[:right + 1])
+    shortest_window = float('inf')
+    while right < len(blocks) - 1:
+        # while < target, increase window by right
+        while ((cur_window_sum < target) and 
+               (right < len(blocks) - 1)):
+            right += 1
+            cur_window_sum += blocks[right]
+        # now >= target
+        if cur_window_sum >= target:
+            shortest_window = min(shortest_window, 
+                                  right - left + 1)
+        # while > target, decrease window from left
+        while ((cur_window_sum >= target) and 
+               (left < len(blocks) - 1)):
+            cur_window_sum -= blocks[left]
+            left += 1
+            if cur_window_sum >= target:
+                shortest_window = min(shortest_window, 
+                                      right - left + 1)
+    return shortest_window if shortest_window != float('inf') else 0
 
 EXAMPLE_CASES = [
     {
@@ -98,6 +119,17 @@ TRICKY_CASES = [
 ]
 
 ALL_CASES = EXAMPLE_CASES + EDGE_CASES + TRICKY_CASES
+SELECTED_CASES = ALL_CASES
+
+
+def select_cases(case_name: str | None) -> list[dict[str, Any]]:
+    """Return all cases or the single named case."""
+    if case_name is None:
+        return ALL_CASES
+    for case in ALL_CASES:
+        if case["name"] == case_name:
+            return [case]
+    raise ValueError(f"Unknown case: {case_name!r}")
 
 
 def run_case(case: dict[str, Any]) -> tuple[Any, Any, str | None, str | None]:
@@ -117,11 +149,11 @@ def run_case(case: dict[str, Any]) -> tuple[Any, Any, str | None, str | None]:
     return case["expected"], actual, None, None
 
 
-def run_examples() -> None:
+def run_examples(cases: list[dict[str, Any]]) -> None:
     """Print the example fixtures and the current implementation status."""
     print(PROBLEM_STATEMENT)
     print()
-    for case in EXAMPLE_CASES:
+    for case in cases:
         expected, actual, error, trace = run_case(case)
         print(case["name"])
         print(f"Input: {pprint.pformat(case['input'], sort_dicts=False)}")
@@ -139,8 +171,19 @@ def run_examples() -> None:
 
 
 class GeneratedTests(unittest.TestCase):
+    def test_select_cases_returns_named_case(self) -> None:
+        selected = select_cases("returns zero when no window reaches the target")
+        self.assertEqual(
+            ["returns zero when no window reaches the target"],
+            [case["name"] for case in selected],
+        )
+
+    def test_select_cases_rejects_unknown_case(self) -> None:
+        with self.assertRaises(ValueError):
+            select_cases("missing case")
+
     def test_all_cases(self) -> None:
-        for case in ALL_CASES:
+        for case in SELECTED_CASES:
             with self.subTest(case=case["name"]):
                 expected, actual, error, trace = run_case(case)
                 if error == "not_implemented":
@@ -156,13 +199,22 @@ class GeneratedTests(unittest.TestCase):
 
 
 def main() -> None:
+    global SELECTED_CASES
     parser = argparse.ArgumentParser(description="Run the Shortest Study Sprint scaffold.")
     parser.add_argument("--test", action="store_true", help="Run unittest coverage.")
+    parser.add_argument(
+        "--case",
+        help="Run only the case with the exact matching name.",
+    )
     args = parser.parse_args()
+    try:
+        SELECTED_CASES = select_cases(args.case)
+    except ValueError as exc:
+        parser.error(str(exc))
     if args.test:
         unittest.main(argv=[sys.argv[0]])
         return
-    run_examples()
+    run_examples(SELECTED_CASES)
 
 
 if __name__ == "__main__":
