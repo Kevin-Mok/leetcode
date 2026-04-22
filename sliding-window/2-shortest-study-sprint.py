@@ -18,23 +18,29 @@ exists.
 
 def shortest_study_sprint(blocks: list[int], target: int) -> int:
     """Return the shortest valid window length for the provided inputs."""
+    # If the target is 0, the empty window already meets it, so the shortest length is 0.
     if target == 0:
         return 0
 
+    # This is a variable-size window: expand right to reach the target, then shrink left.
     left, right = 0, 0
+    # Start with the first one-element window because `right` is inclusive.
     cur_window_sum = sum(blocks[:right + 1])
+    # Any real answer must be smaller than infinity, so this is a safe "not found yet" marker.
     shortest_window = float('inf')
+    # Stop once `right` is at the last index; expanding again would go out of bounds.
     while right < len(blocks) - 1:
-        # while < target, increase window by right
+        # If the window is too small, grow it by moving `right` and adding the new value.
         while ((cur_window_sum < target) and 
                (right < len(blocks) - 1)):
             right += 1
             cur_window_sum += blocks[right]
-        # now >= target
+        # Once the sum is large enough, record this window before trying to shorten it.
         if cur_window_sum >= target:
             shortest_window = min(shortest_window, 
                                   right - left + 1)
-        # while > target, decrease window from left
+        # Then shrink from the left while the window still meets the target.
+        # Checking after each shrink is what finds the shortest valid length.
         while ((cur_window_sum >= target) and 
                (left < len(blocks) - 1)):
             cur_window_sum -= blocks[left]
