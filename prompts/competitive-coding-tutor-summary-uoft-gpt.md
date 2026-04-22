@@ -1,0 +1,11 @@
+Here’s a more technical plain-text version you can send:
+
+Hi [Name] — for a more technical summary of my background, I graduated from the University of Toronto with High Distinction in Computer Science, and my strongest relevant coursework for algorithmic tutoring includes CSC165, CSC236, CSC263, and CSC373, along with the 1st-year CS sequence. Through those courses I built a strong foundation in mathematical reasoning for CS, proof techniques, induction, correctness proofs, asymptotic analysis, recurrence solving, abstract data types, recursion, graphs, trees, hashing, heaps, balanced search trees, disjoint sets, and algorithm design techniques like divide-and-conquer, greedy algorithms, dynamic programming, randomization, network flow, and introductory NP-completeness. My transcript also reflects strong performance in these areas, including A+ grades in CSC165 and CSC263, A in CSC236, and A+ in both CSC108 and CSC148, which I think translates well into helping students with programming fundamentals, data structures, algorithms, and the kind of problem-solving needed for competitive coding.  The official U of T course descriptions for CSC165, CSC236, CSC263, CSC108, CSC148, and CSC373 line up closely with those topics. ([Artsci Calendar][1])
+
+A slightly tighter version:
+
+Hi [Name] — technically, my background is strongest in the core U of T CS theory/algorithms sequence: CSC165, CSC236, CSC263, and CSC373, plus the first-year programming sequence. That gave me solid training in proof-based reasoning, induction, correctness, Big-O and recurrence analysis, data structures, graphs, trees, hashing, heaps, balanced BSTs, and algorithm design techniques like divide-and-conquer, greedy, dynamic programming, randomization, and network flow. I graduated from U of T Computer Science with High Distinction, with A+/A-level results across many of those core courses, so I’d be comfortable tutoring programming fundamentals, data structures, algorithms, and rigorous problem-solving for competitive coding.  ([Artsci Calendar][1])
+
+I can make it even more “sellable” and less academic-sounding too.
+
+[1]: https://artsci.calendar.utoronto.ca/course/csc165h1?utm_source=chatgpt.com "CSC165H1 - Academic Calendar - University of Toronto"
