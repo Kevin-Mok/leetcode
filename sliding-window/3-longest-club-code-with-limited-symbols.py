@@ -104,16 +104,21 @@ TRICKY_CASES = [
 ALL_CASES = EXAMPLE_CASES + EDGE_CASES + TRICKY_CASES
 
 
-def run_case(case: dict[str, Any]) -> tuple[Any, Any, str | None]:
+def run_case(case: dict[str, Any]) -> tuple[Any, Any, str | None, str | None]:
     """Execute one case and return expected/actual/error state."""
     try:
         actual = longest_code_with_limited_symbols(**case["input"])
     except NotImplementedError as exc:
-        return case["expected"], f"<not implemented: {exc}>", "not_implemented"
+        return case["expected"], f"<not implemented: {exc}>", "not_implemented", None
     except Exception as exc:  # pragma: no cover - surfaced in example mode
         trace = "".join(traceback.format_exception(exc)).rstrip()
-        return case["expected"], f"<exception: {trace}>", "exception"
-    return case["expected"], actual, None
+        return (
+            case["expected"],
+            f"<exception: {exc.__class__.__name__}: {exc}>",
+            "exception",
+            trace,
+        )
+    return case["expected"], actual, None, None
 
 
 def run_examples() -> None:
@@ -121,14 +126,19 @@ def run_examples() -> None:
     print(PROBLEM_STATEMENT)
     print()
     for case in EXAMPLE_CASES:
-        expected, actual, error = run_case(case)
+        expected, actual, error, trace = run_case(case)
         print(case["name"])
         print(f"Input: {pprint.pformat(case['input'], sort_dicts=False)}")
         print(f"Expected: {expected!r}")
         print(f"Actual: {actual!r}")
         print(f"Matches expected: {error is None and actual == expected}")
-        if error is not None:
+        if error == "not_implemented":
             print("Status: implementation still needed")
+        elif error == "exception":
+            print("Status: implementation raised an exception")
+        if trace:
+            print("Traceback:")
+            print(trace)
         print()
 
 
@@ -136,14 +146,17 @@ class GeneratedTests(unittest.TestCase):
     def test_all_cases(self) -> None:
         for case in ALL_CASES:
             with self.subTest(case=case["name"]):
-                expected, actual, error = run_case(case)
+                expected, actual, error, trace = run_case(case)
                 if error == "not_implemented":
                     self.fail(
                         "Student implementation missing for "
                         f"{case['name']}: {actual}"
                     )
                 if error == "exception":
-                    self.fail(f"Unexpected exception for {case['name']}: {actual}")
+                    message = f"Unexpected exception for {case['name']}: {actual}"
+                    if trace:
+                        message = f"{message}\n{trace}"
+                    self.fail(message)
                 self.assertEqual(expected, actual)
 
 
