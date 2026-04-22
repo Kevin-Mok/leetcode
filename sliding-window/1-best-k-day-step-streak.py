@@ -19,14 +19,21 @@ If `k <= 0` or `k` is bigger than the input size, return `None`.
 
 def best_k_day_steps(steps: list[int], k: int) -> int | None:
     """Return the best fixed-size window sum for the provided inputs."""
+    # A fixed-size window must have at least 1 day and cannot be longer than the list.
     if k <= 0 or k > len(steps):
         return None
 
     left = 0
+    # `right` is inclusive, so the first k-day window spans indices 0 through k - 1.
     right = k - 1
+    # Slices stop before the end index, so `right + 1` includes the full first window.
     cur_total_steps = sum(steps[left:right + 1])
+    # Start with the first full fixed-size window, then compare later windows against it.
     best_total_steps = cur_total_steps
+    # Stop once `right` is at the last index; sliding again would step past the array.
     while right < len(steps) - 1:
+        # Fixed-size window slide order: remove old left, move both ends, add new right.
+        # This order keeps the window size at k and helps avoid off-by-one mistakes.
         cur_total_steps -= steps[left]
         left += 1
         right += 1
