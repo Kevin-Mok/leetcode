@@ -6,6 +6,13 @@ This repository turns LeetCode practice into recruiter-facing proof: executable 
 
 The README is generated from tracked solution files plus live LeetCode metadata, so solved counts, difficulty buckets, category coverage, and notable examples stay aligned with the repository instead of drifting as more problems get added.
 
+## Tech Stack And Why Chosen
+
+- Python 3: concise enough for interview-style implementation work, but still explicit enough to show pointer logic, recursion, heap operations, and dynamic-programming table updates clearly.
+- Plain scripts plus lightweight classes: keeps each solution close to the LeetCode function or class signature, which makes the algorithmic core easy to inspect without framework noise.
+- Standard-library `unittest`: provides lightweight regression checks for the local harnesses and README generator without adding dependency overhead.
+- Generated README workflow backed by tracked files and live difficulty metadata: keeps the recruiter-facing proof synchronized with the actual codebase instead of relying on manual README edits.
+
 ## Recruiter Proof Surface
 
 - Arrays, strings, and two-pointer work show in-place mutation and index coordination under interview-style constraints.
@@ -93,13 +100,6 @@ The README is generated from tracked solution files plus live LeetCode metadata,
 | [Stack](stack) | 2 |
 | [Strings](strings) | 2 |
 
-## Tech Stack And Why Chosen
-
-- Python 3: concise enough for interview-style implementation work, but still explicit enough to show pointer logic, recursion, heap operations, and dynamic-programming table updates clearly.
-- Plain scripts plus lightweight classes: keeps each solution close to the LeetCode function or class signature, which makes the algorithmic core easy to inspect without framework noise.
-- Standard-library `unittest`: provides lightweight regression checks for the local harnesses and README generator without adding dependency overhead.
-- Generated README workflow backed by tracked files and live difficulty metadata: keeps the recruiter-facing proof synchronized with the actual codebase instead of relying on manual README edits.
-
 ## Install Or Bootstrap
 
 No package install step is required. Clone the repository and use a local Python 3 interpreter.
@@ -110,7 +110,7 @@ cd leetcode
 python3 --version
 ```
 
-## Day-To-Day Use
+## Usage And Day-To-Day Workflow
 
 Add a new solution under the matching topic directory, refresh the local LeetCode catalog when you want the full problem list on disk, then regenerate the README so the solved-problem index, difficulty counts, and notable-problem shortlist stay current.
 
